@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Изразцовая печь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Концепт 3. «Изразец»: пастилу сушат в русской печи XIX века, и сайт одет в печные изразцы. Зелёная глазурь, сливочный фаянс, обожжённая глина. Плитки – сетка всей страницы. */
+:root{
+  --glaze:#235741;    /* зелёная муравленая глазурь */
+  --glaze-d:#163a2b;
+  --faience:#f3ecdc;  /* фаянс, белая глазурь */
+  --clay:#a8512e;     /* обожжённая глина, кирпич */
+  --ochre:#d2a24c;    /* жёлтая глазурь */
+  --ink:#1f2a22;
+  --f-disp:"Yeseva One",Georgia,serif;
+  --f-body:"Lora",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--faience);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* изразец: свой рисунок – розетка из четырёх яблоневых листьев, четверти круга по углам стыкуются в соседние плитки */
+.tiles{background-color:var(--glaze);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Crect width='80' height='80' fill='%23235741'/%3E%3Crect x='3' y='3' width='74' height='74' rx='3' fill='none' stroke='%23f3ecdc' stroke-opacity='.35' stroke-width='1.5'/%3E%3Cpath d='M0 14A14 14 0 0 0 14 0M66 0a14 14 0 0 0 14 14M80 66a14 14 0 0 0-14 14M14 80A14 14 0 0 0 0 66' fill='none' stroke='%23d2a24c' stroke-width='2'/%3E%3Cg fill='%23f3ecdc' fill-opacity='.85'%3E%3Cpath d='M40 22c5 6 5 12 0 16-5-4-5-10 0-16Z'/%3E%3Cpath d='M40 58c5-6 5-12 0-16-5 4-5 10 0 16Z'/%3E%3Cpath d='M22 40c6-5 12-5 16 0-4 5-10 5-16 0Z'/%3E%3Cpath d='M58 40c-6-5-12-5-16 0 4 5 10 5 16 0Z'/%3E%3C/g%3E%3Ccircle cx='40' cy='40' r='4' fill='%23a8512e'/%3E%3C/svg%3E");background-size:80px 80px}
+.frieze{height:26px;background:var(--glaze-d) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='26' viewBox='0 0 52 26'%3E%3Cpath d='M0 13Q13 0 26 13T52 13' fill='none' stroke='%23d2a24c' stroke-width='2'/%3E%3Ccircle cx='13' cy='8' r='2.5' fill='%23a8512e'/%3E%3Ccircle cx='39' cy='18' r='2.5' fill='%23f3ecdc'/%3E%3C/svg%3E") repeat-x center/52px 26px}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--faience);border-bottom:4px solid var(--glaze)}
+.top .wrap{display:flex;align-items:center;gap:26px;min-height:78px}
+.logo img{width:84px}
+.nav{display:flex;gap:24px;margin-left:auto;font-size:16px}
+.nav a{text-decoration:none}.nav a:hover{color:var(--clay)}
+.tel{font-family:var(--f-disp);font-size:18px;text-decoration:none;color:var(--glaze);white-space:nowrap}
+.cta{background:var(--clay);color:var(--faience);text-decoration:none;padding:11px 18px;font-weight:600;font-size:15px;white-space:nowrap;border-radius:3px}
+.burger{display:none;margin-left:auto;background:var(--glaze);color:var(--faience);border:0;font:inherit;padding:8px 14px;border-radius:3px}
+/* экран 1: печное чело */
+.hero{padding-block:46px 64px}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:center}
+.hero .lbl{font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--clay)}
+.hero h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,6vw,86px);line-height:1;margin:16px 0 20px;color:var(--glaze-d);text-wrap:balance}
+.hero p{font-size:19px;max-width:44ch;margin:0 0 30px}
+.btn{display:inline-block;text-decoration:none;font-weight:600;padding:15px 24px;border-radius:3px}
+.btn.c{background:var(--clay);color:var(--faience)}.btn.g{border:2px solid var(--glaze);color:var(--glaze);margin-left:10px}
+.oven{padding:22px;border-radius:200px 200px 10px 10px;position:relative;box-shadow:0 30px 50px -30px rgba(22,58,43,.6)}
+.oven .mouth{border-radius:180px 180px 6px 6px;overflow:hidden;border:6px solid var(--faience);aspect-ratio:4/4.4;position:relative;background:var(--glaze-d)}
+.oven .mouth img{width:100%;height:100%;object-fit:cover}
+.oven .mouth::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 100%,rgba(232,140,60,.35),transparent 60%)}
+.oven .plate{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);background:var(--ochre);color:var(--glaze-d);font-family:var(--f-disp);font-size:20px;padding:8px 22px;border-radius:3px;white-space:nowrap;border:3px solid var(--faience)}
+/* экран 2: три плитки-факта */
+.facts{padding-block:80px}
+.facts .in{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;background:var(--faience);border:6px solid var(--faience);overflow:hidden}
+.f{padding:34px 28px;border:2px solid var(--glaze);margin:-1px;background:var(--faience);position:relative;min-width:0}
+.f::before,.f::after{content:"";position:absolute;width:22px;height:22px;border:2px solid var(--ochre)}
+.f::before{top:8px;left:8px;border-right:0;border-bottom:0}
+.f::after{bottom:8px;right:8px;border-left:0;border-top:0}
+.f b{display:block;font-family:var(--f-disp);font-weight:400;font-size:clamp(40px,4.6vw,62px);line-height:1;color:var(--clay)}
+.f h3{font-family:var(--f-disp);font-weight:400;font-size:22px;margin:12px 0 8px;color:var(--glaze-d)}
+.f p{margin:0;font-size:16px}
+.facts h2{font-family:var(--f-disp);font-weight:400;color:var(--faience);font-size:clamp(30px,4vw,52px);text-align:center;margin:0 auto 34px;line-height:1.1;background:var(--glaze-d);width:fit-content;max-width:100%;padding:8px 26px;border:2px solid var(--ochre)}
+/* экран 3: каталог в рамках-изразцах */
+.cat{padding-block:84px}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.05;margin:0;color:var(--glaze-d)}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.t{text-decoration:none;background:#fff;padding:10px;border-radius:4px;box-shadow:0 0 0 2px var(--glaze);display:flex;flex-direction:column;transition:transform .2s}
+.t:hover{transform:translateY(-3px)}
+.t .face{aspect-ratio:1/1;display:grid;place-items:center;background:radial-gradient(circle,#fff 52%,transparent 53%),var(--glaze) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath d='M20 4c4 5 4 10 0 13-4-3-4-8 0-13Z' fill='%23d2a24c'/%3E%3C/svg%3E") center/40px;border-radius:3px}
+.t .face img{width:62%;height:62%;object-fit:contain}
+.t h3{font-family:var(--f-disp);font-weight:400;font-size:20px;margin:14px 6px 4px;line-height:1.15;color:var(--glaze-d)}
+.t p{margin:0 6px 8px;font-size:14px;color:#5b5b4e}
+/* экран 4: история и где купить */
+.hist{background:var(--glaze-d);color:var(--faience);padding-block:84px}
+.hist .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.hist h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(32px,4vw,54px);line-height:1.05;margin:0 0 18px;color:var(--ochre)}
+.hist p{max-width:50ch;opacity:.92}
+.yrs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:26px 0}
+.yrs div{border:2px solid var(--ochre);padding:14px;text-align:center}
+.hist .wrap>*{min-width:0}
+.yrs div{min-width:0}
+.yrs b{display:block;font-family:var(--f-disp);font-weight:400;font-size:30px;color:var(--ochre)}
+.yrs span{font-size:14px}
+.hist .ph{border:8px solid var(--faience);border-radius:4px;overflow:hidden}
+.hist .ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.where{display:flex;flex-wrap:wrap;gap:10px}
+.where span{background:var(--faience);color:var(--glaze-d);padding:8px 14px;border-radius:3px;font-weight:600;font-size:15px}
+.note{font-size:13px;opacity:.6;margin-top:24px}
+@media (max-width:1020px){
+  .nav,.tel{display:none}.burger{display:block}.cta{display:none}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:var(--faience);border-bottom:4px solid var(--glaze);padding:18px max(20px,env(safe-area-inset-left,0px))}
+  .hero .wrap,.hist .wrap{grid-template-columns:1fr}
+  .facts .in{grid-template-columns:1fr}
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .btn.g{margin:12px 0 0}
+  .grid{gap:12px}.t h3{font-size:16px}
+  .oven{padding:12px}
+  .yrs b{font-size:22px}
+  .yrs div{padding:10px 4px}.yrs span{font-size:12px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#">О мануфактуре</a><a href="#cat">Каталог</a><a href="#pech">Русская печь</a><a href="#hist">История</a><a href="#">Где купить</a><a href="#">Контакты</a></nav>
+    <a class="tel" href="tel:+79857708787">+7 985 770-87-87</a>
+    <a class="cta" href="#cat">Каталог</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+<div class="frieze" aria-hidden="true"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="lbl">Белёв · с 1881 года</div>
+      <h1>Пастила из русской печи</h1>
+      <p>Печь построили в XIX веке и до сих пор топят дровами. В ней сушат пласты из печёной антоновки, а потом досушивают готовый «пирог» в остывающем жаре.</p>
+      <a class="btn c" href="#cat">Выбрать пастилу</a><a class="btn g" href="#pech">Как сушат</a>
+    </div>
+    <div class="oven tiles">
+      <div class="mouth"><img src="img/ig-tea-hill.jpg" alt="Чаепитие с белёвской пастилой на закате"></div>
+      <div class="plate">печь XIX века</div>
+    </div>
+  </div>
+</section>
+
+<section class="facts tiles" id="pech">
+  <div class="wrap">
+    <h2>Что происходит в печи</h2>
+    <div class="in">
+      <div class="f"><b>~7</b><h3>дней на кусочек</h3><p>От запекания яблок до готовой пастилы. Заварная пастила делается гораздо быстрее.</p></div>
+      <div class="f"><b>12–24</b><h3>часа досушки</h3><p>Собранный «пирог» доходит в остывающей печи, пока она не остынет.</p></div>
+      <div class="f"><b>3 : 1</b><h3>яблок к пастиле</h3><p>3 кг антоновки, 100 г сахара и белок одного яйца дают 1 кг пастилы.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat" id="cat">
+  <div class="wrap">
+    <div class="hd"><h2 class="h2">Из нашей печи</h2><a class="btn g" style="margin:0" href="#">Весь каталог</a></div>
+    <div class="grid">
+      <a class="t" href="#"><div class="face"><img src="img/cut-apple.png" alt=""></div><h3>Белёвская пастила</h3><p>яблоки, сахар, яичный белок</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-nut.png" alt=""></div><h3>Без добавления сахара</h3><p>яблоки и яичный белок</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-cranberry.png" alt=""></div><h3>С ягодами</h3><p>клюква, брусника, вишня, смородина</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-sukh.png" alt=""></div><h3>Сухарики из пастилы</h3><p>досушенные кусочки</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-zef.png" alt=""></div><h3>Белёвский зефир</h3><p>ванильный, антоновка, кофейный</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-marm.png" alt=""></div><h3>Мармелад</h3><p>на ягодном и фруктовом соке</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-merengi.png" alt=""></div><h3>Яблочные меренги</h3><p>в стаканчике</p></a>
+      <a class="t" href="#"><div class="face"><img src="img/cut-smokva.png" alt=""></div><h3>Смоква</h3><p>яблоко с тыквой или облепихой</p></a>
+    </div>
+  </div>
+</section>
+<div class="frieze" aria-hidden="true"></div>
+
+<section class="hist" id="hist">
+  <div class="wrap">
+    <div>
+      <h2>Печь помнит купца Прохорова</h2>
+      <p>В 1881 году белёвский купец Амвросий Прохоров поставил завод «огневой сушки» фруктов. Яблоки пекли, взбивали с яйцом и мёдом и сушили в печи. Так появилась белёвская пастила. В 2010 году мануфактура вернула её в магазины по тому же рецепту.</p>
+      <div class="yrs"><div><b>1881</b><span>завод Прохорова</span></div><div><b>XIX в.</b><span>печь мануфактуры</span></div><div><b>2010</b><span>возрождение</span></div></div>
+      <div class="where"><span>Москва – 100+ магазинов</span><span>Wildberries</span><span>pastila.eu</span></div>
+    </div>
+    <div class="ph"><img src="img/ig-belev.jpg" alt="Белёв и коробка белёвской пастилы"></div>
+  </div>
+</section>
+<div class="wrap"><p class="note">Концепт 3 из 8. Узор изразцов нарисован для концепта.</p></div>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

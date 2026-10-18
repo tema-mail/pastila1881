@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Вывеска мануфактуры</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Bitter:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+/* Концепт 5. «Вывеска»: рекламный плакат и прейскурант кондитерской 1900-х. Бумага, типографская краска, красная и зелёная печать, медальоны, ленты, отточия. */
+:root{
+  --paper:#f1e6cf;    /* старая бумага */
+  --paper-d:#e5d5b4;
+  --ink:#1c1712;      /* типографская краска */
+  --red:#a52a1f;      /* красная печать */
+  --green:#206c2d;    /* зелёная печать = цвет логотипа */
+  --gold:#c39a45;
+  --f-disp:"Playfair Display",Georgia,serif;
+  --f-body:"Bitter",Georgia,serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden;background-image:radial-gradient(rgba(28,23,18,.05) 1px,transparent 1px);background-size:5px 5px}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.rule{border:0;border-top:3px double var(--ink);margin:0}
+/* шапка как газетный заголовок */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:3px double var(--ink)}
+.top .wrap{display:flex;align-items:center;gap:24px;min-height:74px}
+.logo img{width:78px}
+.nav{display:flex;gap:22px;margin-left:auto;font-weight:600;font-size:15px;text-transform:uppercase;letter-spacing:.06em}
+.nav a{text-decoration:none}.nav a:hover{color:var(--red)}
+.tel{font-family:var(--f-disp);font-weight:900;font-size:19px;text-decoration:none;white-space:nowrap}
+.burger{display:none;margin-left:auto;background:var(--ink);color:var(--paper);border:0;font:inherit;font-weight:600;padding:8px 14px}
+.strip{background:var(--ink);color:var(--paper);font-size:13px;letter-spacing:.2em;text-transform:uppercase;text-align:center;padding:6px 10px}
+/* экран 1: плакат */
+.poster{padding-block:44px 60px}
+.poster .frame{border:3px solid var(--ink);outline:1px solid var(--ink);outline-offset:6px;padding:40px 36px;position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;background:rgba(255,255,255,.18)}
+.corner{position:absolute;width:40px;height:40px;border:3px solid var(--red)}
+.corner.a{top:-12px;left:-12px;border-right:0;border-bottom:0}.corner.b{top:-12px;right:-12px;border-left:0;border-bottom:0}
+.corner.c{bottom:-12px;left:-12px;border-right:0;border-top:0}.corner.d{bottom:-12px;right:-12px;border-left:0;border-top:0}
+.kick{display:flex;align-items:center;gap:12px;font-size:14px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;color:var(--red)}
+.kick::before,.kick::after{content:"";height:2px;width:36px;background:var(--red)}
+.poster h1{font-family:var(--f-disp);font-weight:900;font-size:clamp(46px,7vw,104px);line-height:.92;margin:16px 0 8px;text-transform:uppercase;letter-spacing:-.01em}
+.poster h1 em{display:block;font-style:italic;font-weight:700;text-transform:none;font-size:.46em;color:var(--green);letter-spacing:0;margin-top:10px}
+.poster .claims{display:grid;gap:6px;margin:22px 0 28px;font-size:18px}
+.poster .claims div{display:flex;align-items:baseline;gap:10px}
+.poster .claims div::before{content:"✦";color:var(--red)}
+.btn{display:inline-block;text-decoration:none;font-family:var(--f-disp);font-weight:900;font-size:18px;text-transform:uppercase;letter-spacing:.04em;padding:14px 26px}
+.btn.r{background:var(--red);color:var(--paper)}.btn.k{border:3px solid var(--ink);margin-left:10px}
+.medal{position:relative;justify-self:center;width:min(440px,100%);aspect-ratio:1/1}
+.medal .disc{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(var(--green) 0 6deg,#1a5a25 6deg 12deg);border:4px solid var(--ink)}
+.medal .inner{position:absolute;inset:9%;border-radius:50%;background:var(--paper);border:3px solid var(--gold);display:grid;place-items:center;overflow:hidden}
+.medal .inner img{width:84%}
+.medal .ribbon{position:absolute;left:-6%;right:-6%;bottom:6%;background:var(--red);color:var(--paper);text-align:center;font-family:var(--f-disp);font-weight:900;font-size:clamp(18px,2.2vw,26px);padding:8px 0;text-transform:uppercase;letter-spacing:.06em;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+.medal .yr{position:absolute;top:2%;right:4%;width:30%;aspect-ratio:1/1;border-radius:50%;background:var(--gold);border:3px solid var(--ink);display:grid;place-items:center;font-family:var(--f-disp);font-weight:900;font-size:clamp(20px,2.6vw,32px);transform:rotate(12deg)}
+/* экран 2: прейскурант */
+.price{padding-block:70px}
+.sheet{background:#fbf5e6;border:2px solid var(--ink);padding:44px 48px;box-shadow:8px 8px 0 var(--paper-d)}
+.sheet h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(32px,4.4vw,58px);text-transform:uppercase;text-align:center;margin:0;line-height:1}
+.sheet .sub{text-align:center;font-style:italic;margin:8px 0 30px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:10px 56px}
+.grp{font-family:var(--f-disp);font-weight:900;font-size:22px;color:var(--red);text-transform:uppercase;margin:14px 0 4px;grid-column:span 1}
+.li{display:flex;align-items:baseline;gap:8px;font-size:17px}
+.li .n{flex:none;max-width:70%}
+.li .d{flex:1;border-bottom:2px dotted rgba(28,23,18,.5);transform:translateY(-4px);min-width:20px}
+.li .w{flex:none;font-weight:600;font-variant-numeric:tabular-nums}
+.li small{display:block;font-size:13px;opacity:.65;font-style:italic}
+.sheet .foot{text-align:center;margin-top:28px;font-size:15px;font-style:italic}
+/* экран 3: ярлыки */
+.labels{padding-block:30px 80px}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:30px}
+.h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(30px,4vw,52px);text-transform:uppercase;margin:0;line-height:1}
+.lbls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.lb{text-decoration:none;background:#fbf5e6;border:2px solid var(--ink);padding:10px;position:relative}
+.lb .in{border:1px solid var(--ink);padding:16px 12px 14px;text-align:center;height:100%}
+.lb .im{height:120px;display:grid;place-items:center}
+.lb .im img{max-height:110px;width:auto}
+.lb h3{font-family:var(--f-disp);font-weight:900;font-size:19px;text-transform:uppercase;margin:12px 0 4px;line-height:1.1}
+.lb p{margin:0;font-size:14px;font-style:italic}
+.lb .no{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--paper);font-family:var(--f-disp);font-weight:900;font-size:13px;padding:3px 12px;border:2px solid var(--ink);white-space:nowrap}
+/* экран 4: адреса торговли */
+.trade{background:var(--ink);color:var(--paper);padding-block:80px}
+.trade .wrap{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.trade h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(32px,4.4vw,58px);text-transform:uppercase;line-height:1;margin:0 0 20px;color:var(--gold)}
+.addr{display:grid;gap:14px}
+.addr div{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:baseline;border-bottom:1px solid rgba(241,230,207,.25);padding-bottom:12px}
+.addr b{font-family:var(--f-disp);font-weight:900;font-size:26px;color:var(--gold);min-width:3.4em}
+.trade .ph{border:3px solid var(--paper);padding:8px}
+.trade .ph img{width:100%;aspect-ratio:5/4;object-fit:cover;filter:sepia(.25) contrast(1.05)}
+.trade .ph figcaption{font-size:13px;font-style:italic;opacity:.7;margin-top:8px;text-align:center}
+.contact{margin-top:24px;font-family:var(--f-disp);font-weight:700;font-size:20px;line-height:1.5}
+.note{font-size:13px;opacity:.6;margin-top:22px}
+@media (max-width:1000px){
+  .nav,.tel{display:none}.burger{display:block}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--paper);border-bottom:3px double var(--ink);padding:16px max(20px,env(safe-area-inset-left,0px))}
+  .poster .frame{grid-template-columns:1fr;padding:30px 22px}
+  .cols{grid-template-columns:1fr}
+  .lbls{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .trade .wrap{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .sheet{padding:28px 18px}
+  .btn.k{margin:12px 0 0}
+  .lbls{gap:16px 10px}.lb h3{font-size:15px}.lb .im{height:90px}
+  .li{font-size:15px}
+}
+</style>
+</head>
+<body>
+<div class="strip">Пастильная мануфактура въ городѣ Бѣлёвѣ · съ 1881 года</div>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#price">Прейскурант</a><a href="#lbl">Каталог</a><a href="#trade">Где купить</a><a href="#">История</a><a href="#">Контакты</a></nav>
+    <a class="tel" href="tel:+79857708787">+7 985 770-87-87</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+
+<section class="poster">
+  <div class="wrap">
+    <div class="frame">
+      <i class="corner a"></i><i class="corner b"></i><i class="corner c"></i><i class="corner d"></i>
+      <div>
+        <div class="kick">Тульская губернія</div>
+        <h1>Белёвская пастила<em>изъ печёныхъ антоновскихъ яблокъ</em></h1>
+        <div class="claims">
+          <div>Готовится вручную, около семи дней</div>
+          <div>Сушится въ русской печи XIX века</div>
+          <div>3 кг яблокъ на 1 кг пастилы</div>
+        </div>
+        <a class="btn r" href="#price">Прейскурант</a><a class="btn k" href="#trade">Где купить</a>
+      </div>
+      <div class="medal">
+        <div class="disc"></div>
+        <div class="inner"><img src="img/cut-plate.png" alt="Белёвская пастила на блюде"></div>
+        <div class="yr">1881</div>
+        <div class="ribbon">Белёвъ</div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="rule">
+
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="sheet">
+      <h2>Прейскурантъ</h2>
+      <p class="sub">сладостей Белёвской пастильной мануфактуры</p>
+      <div class="cols">
+        <div>
+          <div class="grp">Пастила</div>
+          <div class="li"><span class="n">Классическая<small>яблоки, сахар, яичный белок</small></span><span class="d"></span><span class="w">200 г</span></div>
+          <div class="li"><span class="n">Съ клюквой<small>яблоки, клюква, сахар, белок</small></span><span class="d"></span><span class="w">200 г</span></div>
+          <div class="li"><span class="n">Съ кедровымъ орѣхомъ<small>яблоки, кедровый орех, сахар, белок</small></span><span class="d"></span><span class="w">200 г</span></div>
+          <div class="li"><span class="n">Постная<small>яблоки, сахар</small></span><span class="d"></span><span class="w">288 ккал</span></div>
+          <div class="grp">Безъ сахара</div>
+          <div class="li"><span class="n">Классическая<small>яблоки, яичный белок</small></span><span class="d"></span><span class="w">100 г</span></div>
+          <div class="li"><span class="n">Съ брусникой, вишней, смородиной</span><span class="d"></span><span class="w">180 г</span></div>
+        </div>
+        <div>
+          <div class="grp">Зефиръ въ глазури</div>
+          <div class="li"><span class="n">«Ванильный»</span><span class="d"></span><span class="w">шоколадъ</span></div>
+          <div class="li"><span class="n">«Антоновка»</span><span class="d"></span><span class="w">шоколадъ</span></div>
+          <div class="li"><span class="n">«Кофейный»</span><span class="d"></span><span class="w">шоколадъ</span></div>
+          <div class="grp">Прочее</div>
+          <div class="li"><span class="n">Смоква яблочно-тыквенная</span><span class="d"></span><span class="w">50 г</span></div>
+          <div class="li"><span class="n">Батончикъ ягодный, яблочный</span><span class="d"></span><span class="w">35 г</span></div>
+          <div class="li"><span class="n">Сухарики, мармеладъ, меренги</span><span class="d"></span><span class="w">→</span></div>
+        </div>
+      </div>
+      <p class="foot">Составъ и пищевая ценность – на карточке каждаго товара</p>
+    </div>
+  </div>
+</section>
+
+<section class="labels" id="lbl">
+  <div class="wrap">
+    <div class="hd"><h2 class="h2">Ярлыки мануфактуры</h2><a class="btn k" style="margin:0" href="#">Весь каталог</a></div>
+    <div class="lbls">
+      <a class="lb" href="#"><span class="no">№ 1</span><div class="in"><div class="im"><img src="img/box-classic.jpg" alt=""></div><h3>Пастила</h3><p>классическая</p></div></a>
+      <a class="lb" href="#"><span class="no">№ 2</span><div class="in"><div class="im"><img src="img/box-zefir-brown.png" alt=""></div><h3>Зефиръ</h3><p>въ шоколадной глазури</p></div></a>
+      <a class="lb" href="#"><span class="no">№ 3</span><div class="in"><div class="im"><img src="img/box-red.png" alt=""></div><h3>Безъ сахара</h3><p>съ брусникой</p></div></a>
+      <a class="lb" href="#"><span class="no">№ 4</span><div class="in"><div class="im"><img src="img/smokva-1.jpg" alt=""></div><h3>Смоква</h3><p>яблоко и тыква</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="trade" id="trade">
+  <div class="wrap">
+    <div>
+      <h2>Гдѣ купить</h2>
+      <div class="addr">
+        <div><b>100+</b><span>магазинов въ Москвѣ</span></div>
+        <div><b>2</b><span>магазина въ Сочи</span></div>
+        <div><b>1</b><span>магазинъ въ Ростовѣ-на-Дону</span></div>
+        <div><b>WB</b><span>доставка по Россіи через Wildberries</span></div>
+        <div><b>EU</b><span>Европа: интернет-магазинъ pastila.eu</span></div>
+      </div>
+      <div class="contact">+7 985 770-87-87 · пн–пт 9–19<br>pastila1881@yandex.ru</div>
+    </div>
+    <figure class="ph" style="margin:0"><img src="img/site-basket.jpg" alt="Корзина яблок и коробки пастилы"><figcaption>Мануфактура: г. Белёв, ул. Рабочая, 134</figcaption></figure>
+  </div>
+</section>
+<div class="wrap"><p class="note">Концепт 5 из 8. Дореформенная орфография – только в заголовках, как стилизация. Цен в прейскуранте нет: на сайте их нет.</p></div>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

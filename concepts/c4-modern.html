@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пастила в стиле модерн</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Kurale&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Концепт 4. «Модерн»: кондитерская упаковка 1900-х. Арочные окна-рамы, гибкие ветви яблони, мята, бутылочный зелёный и старое золото. */
+:root{
+  --mint:#dbeadb;     /* мятный картон */
+  --sage:#9fbea2;
+  --bottle:#1f3a2b;   /* бутылочный зелёный бренда */
+  --gold:#b8964f;     /* старое золото тиснения */
+  --cream:#faf6ec;
+  --rose:#c96a6a;     /* румянец яблока */
+  --f-disp:"Kurale",Georgia,serif;
+  --f-body:"PT Serif",Georgia,"Times New Roman",serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--cream);color:var(--bottle);font-family:var(--f-body);font-size:17px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bottle);color:var(--cream)}
+.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;min-height:84px}
+.nav{display:flex;gap:22px;font-size:15px;letter-spacing:.06em}
+.nav a{text-decoration:none;opacity:.85}.nav a:hover{opacity:1;color:var(--gold)}
+.nav.r{justify-content:flex-end}
+.logo{justify-self:center}
+.logo img{width:96px}
+.burger{display:none;justify-self:end;background:none;border:1px solid var(--gold);color:var(--gold);font:inherit;padding:6px 14px;border-radius:20px}
+.gold-line{height:6px;background:linear-gradient(90deg,transparent,var(--gold) 15%,var(--gold) 85%,transparent);opacity:.8}
+/* экран 1: три арочных окна */
+.hero{background:var(--mint);padding-block:60px 70px;position:relative;overflow:hidden}
+.vine{position:absolute;pointer-events:none;opacity:.55}
+.vine.l{left:-30px;top:0;width:260px}
+.vine.r{right:-30px;bottom:-10px;width:260px;transform:scaleX(-1) rotate(180deg)}
+.hero .wrap{position:relative;z-index:2;text-align:center}
+.hero .ey{font-family:var(--f-disp);font-size:20px;color:var(--rose)}
+.hero h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(44px,6.6vw,96px);line-height:1;margin:6px 0 10px}
+.hero .sub{max-width:56ch;margin:0 auto 38px;font-size:18px}
+.arches{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:26px;align-items:end;max-width:1000px;margin:0 auto}
+.arch{border-radius:999px 999px 8px 8px;padding:8px;background:var(--cream);box-shadow:0 0 0 2px var(--gold)}
+.arch div{border-radius:999px 999px 4px 4px;overflow:hidden;aspect-ratio:3/4.4}
+.arch.mid div{aspect-ratio:3/4.2}
+.arch img{width:100%;height:100%;object-fit:cover}
+.arch span{display:block;font-family:var(--f-disp);font-size:18px;padding:10px 0 4px}
+.btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.btn{display:inline-block;text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:700;font-size:16px}
+.btn.d{background:var(--bottle);color:var(--cream)}.btn.o{border:2px solid var(--bottle)}
+/* экран 2: ассортимент в медальонах */
+.col{padding-block:86px}
+.h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.05;margin:0;text-align:center}
+.h2+p{text-align:center;max-width:52ch;margin:12px auto 44px}
+.meds{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:30px 22px}
+.med{text-decoration:none;text-align:center}
+.med .ring{aspect-ratio:1/1;border-radius:50%;padding:10px;background:conic-gradient(from 0deg,var(--gold),#e6d3a2,var(--gold),#8d7238,var(--gold));transition:transform .3s}
+.med:hover .ring{transform:rotate(-4deg) scale(1.03)}
+.med .ring div{width:100%;height:100%;border-radius:50%;background:var(--mint);display:grid;place-items:center;overflow:hidden}
+.med .ring img{width:70%;height:70%;object-fit:contain}
+.med h3{font-family:var(--f-disp);font-weight:400;font-size:22px;margin:14px 0 2px}
+.med p{margin:0;font-size:14px;font-style:italic;opacity:.75}
+/* экран 3: рецепт в рамке модерн */
+.rec{background:var(--bottle);color:var(--cream);padding-block:90px;position:relative;overflow:hidden}
+.rec .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.panel{border:2px solid var(--gold);border-radius:160px 160px 10px 10px;padding:46px 40px 40px;position:relative}
+.panel::before{content:"";position:absolute;inset:10px;border:1px solid rgba(184,150,79,.5);border-radius:150px 150px 6px 6px;pointer-events:none}
+.panel h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(30px,3.6vw,46px);margin:0 0 18px;text-align:center;color:var(--gold);line-height:1.1}
+.ing{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:22px}
+.ing span{border:1px solid var(--gold);border-radius:999px;padding:6px 14px;font-size:15px}
+.panel ol{margin:0;padding-left:22px;display:grid;gap:8px}
+.panel .tot{text-align:center;margin-top:22px;font-family:var(--f-disp);font-size:22px;color:var(--gold)}
+.rec .ph{border-radius:999px 999px 10px 10px;overflow:hidden;border:2px solid var(--gold);padding:8px}
+.rec .ph img{border-radius:999px 999px 6px 6px;width:100%;aspect-ratio:4/5;object-fit:cover}
+/* экран 4: новости-открытки */
+.news{padding-block:86px;background:var(--cream)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:40px}
+.nc{text-decoration:none;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 0 0 1px var(--sage)}
+.nc .im{aspect-ratio:4/3;overflow:hidden;border-bottom:3px solid var(--gold)}
+.nc .im img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.nc:hover .im img{transform:scale(1.05)}
+.nc .b{padding:18px 20px 22px}
+.nc .d{font-family:var(--f-disp);color:var(--rose);font-size:16px}
+.nc h3{font-family:var(--f-disp);font-weight:400;font-size:23px;margin:6px 0 6px;line-height:1.15}
+.nc p{margin:0;font-size:15px;opacity:.8}
+.insta{margin-top:40px;text-align:center}
+.note{font-size:13px;opacity:.6;margin-top:26px;text-align:center}
+@media (max-width:1020px){
+  .top .wrap{grid-template-columns:auto 1fr}
+  .logo{justify-self:start}.nav{display:none}.burger{display:block}
+  .nav.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:84px;background:var(--bottle);padding:16px max(20px,env(safe-area-inset-left,0px))}
+  .nav.r.open{top:auto}
+  .meds{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .rec .wrap{grid-template-columns:1fr}
+  .cards{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .arches{grid-template-columns:1fr 1fr;gap:12px}
+  .arch.mid{grid-column:1/-1;order:-1;max-width:300px;justify-self:center;width:100%}
+  .arch span{font-size:15px}
+  .panel{padding:40px 22px 28px;border-radius:120px 120px 10px 10px}
+  .vine{display:none}
+}
+</style>
+</head>
+<body>
+<!-- ветвь яблони для углов, своя прорисовка -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="vine" viewBox="0 0 260 420">
+    <path d="M20 0C40 80 10 140 60 200s120 60 110 140-60 70-40 80" fill="none" stroke="#1f3a2b" stroke-width="3"/>
+    <path d="M58 196c30-30 70-36 96-20M90 120c-20-30-10-60 14-74M140 300c30-10 60 0 76 24" fill="none" stroke="#1f3a2b" stroke-width="2"/>
+    <g fill="#9fbea2" stroke="#1f3a2b" stroke-width="1.5"><path d="M154 176c16-14 38-12 48 0-14 14-34 14-48 0Z"/><path d="M104 46c4-20 22-30 36-24-4 20-20 30-36 24Z"/><path d="M216 324c18-6 34 4 36 18-18 6-32-2-36-18Z"/><path d="M40 90c-16-10-18-30-8-40 14 10 16 28 8 40Z"/></g>
+    <g stroke="#1f3a2b" stroke-width="1.5"><circle cx="70" cy="250" r="20" fill="#c96a6a"/><circle cx="104" cy="262" r="16" fill="#b8964f"/></g>
+    <g fill="#faf6ec" stroke="#1f3a2b" stroke-width="1.2"><circle cx="118" cy="132" r="7"/><circle cx="130" cy="124" r="7"/><circle cx="126" cy="140" r="7"/></g>
+  </symbol>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <nav class="nav" id="nav"><a href="#">О мануфактуре</a><a href="#col">Каталог</a><a href="#rec">Рецепт</a></nav>
+    <a class="logo" href="#"><img src="img/logo-white.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav r" id="nav2"><a href="#news">Новости</a><a href="#">Где купить</a><a href="#">Контакты</a></nav>
+    <button class="burger" type="button" id="burger" aria-expanded="false">Меню</button>
+  </div>
+</header>
+<div class="gold-line" aria-hidden="true"></div>
+
+<section class="hero">
+  <svg class="vine l" viewBox="0 0 260 420" aria-hidden="true"><use href="#vine"/></svg>
+  <svg class="vine r" viewBox="0 0 260 420" aria-hidden="true"><use href="#vine"/></svg>
+  <div class="wrap">
+    <div class="ey">Пастильная мануфактура · Белёвъ · 1881</div>
+    <h1>Белёвская пастила</h1>
+    <p class="sub">Из печёных антоновских яблок, по рецепту купца Прохорова. Пастила, зефир, меренги и мармелад ручной работы.</p>
+    <div class="arches">
+      <a class="arch" href="#"><div><img src="img/ig-summer.jpg" alt="Зефир, мармелад и пастила в саду"></div><span>Летом в саду</span></a>
+      <a class="arch mid" href="#"><div><img src="img/ig-samovar.jpg" alt="Чаепитие у самовара"></div><span>К самовару</span></a>
+      <a class="arch" href="#"><div><img src="img/ig-zefir-lilac.jpg" alt="Белёвский зефир и сирень"></div><span>С сиренью</span></a>
+    </div>
+    <div class="btns"><a class="btn d" href="#col">Смотреть каталог</a><a class="btn o" href="#">Где купить</a></div>
+  </div>
+</section>
+<div class="gold-line" aria-hidden="true"></div>
+
+<section class="col" id="col">
+  <div class="wrap">
+    <h2 class="h2">Сладости мануфактуры</h2>
+    <p>Всё делается из яблок, ягод и белка. Есть линейка без добавления сахара.</p>
+    <div class="meds">
+      <a class="med" href="#"><div class="ring"><div><img src="img/cut-apple.png" alt=""></div></div><h3>Пастила</h3><p>классическая и с ягодами</p></a>
+      <a class="med" href="#"><div class="ring"><div><img src="img/cut-nut.png" alt=""></div></div><h3>Без сахара</h3><p>яблоки и белок</p></a>
+      <a class="med" href="#"><div class="ring"><div><img src="img/cut-zef.png" alt=""></div></div><h3>Зефир</h3><p>и в шоколадной глазури</p></a>
+      <a class="med" href="#"><div class="ring"><div><img src="img/cut-merengi.png" alt=""></div></div><h3>Меренги</h3><p>яблочные, воздушные</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="rec" id="rec">
+  <div class="wrap">
+    <div class="panel">
+      <h2>Рецепт на килограмм</h2>
+      <div class="ing"><span>3 кг антоновки</span><span>100 г сахара</span><span>белок 1 яйца</span></div>
+      <ol>
+        <li>Яблоки запекают целиком</li>
+        <li>Взбивают с сахаром и белком</li>
+        <li>Сушат пласты в русской печи</li>
+        <li>Складывают «пирог», промазывая слои</li>
+        <li>Досушивают 12–24 часа в остывающей печи</li>
+      </ol>
+      <div class="tot">≈ 7 дней от яблока до кусочка</div>
+    </div>
+    <div class="ph"><img src="img/ig-cocoa.jpg" alt="Пастила к чаю и антоновское яблоко"></div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="wrap">
+    <h2 class="h2">Новости мануфактуры</h2>
+    <div class="cards">
+      <a class="nc" href="#"><div class="im"><img src="img/ig-gift.jpg" alt=""></div><div class="b"><div class="d">Новинка</div><h3>Мятная подарочная коробка</h3><p>Подарочный набор пастилы, заказать можно на Flowwow.</p></div></a>
+      <a class="nc" href="#"><div class="im"><img src="img/ig-raspberry.jpg" alt=""></div><div class="b"><div class="d">Новинка</div><h3>«Кусочек» в дорогу</h3><p>Пастила в индивидуальной упаковке. Уже на Wildberries.</p></div></a>
+      <a class="nc" href="#"><div class="im"><img src="img/ig-zefir-box.jpg" alt=""></div><div class="b"><div class="d">Партнёрство</div><h3>«Мама года 2026»</h3><p>Мануфактура – сладкий партнёр премии.</p></div></a>
+    </div>
+    <div class="insta"><a class="btn o" href="https://www.instagram.com/pastila1881/">Instagram @pastila1881 · 32,2 тыс.</a></div>
+    <p class="note">Концепт 4 из 8. Ветви яблони нарисованы для концепта.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav'),n2=document.getElementById('nav2');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');n2.classList.toggle('open',o);n2.style.top=o?(84+n.offsetHeight)+'px':'';b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

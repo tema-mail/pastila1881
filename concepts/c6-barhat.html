@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Зелёный бархат</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Концепт 6. «Бархат»: премиальный кондитерский дом. Глубокий зелёный бархат, тонкие золотые линии, крупная фотография продукта, лёгкая антиква. */
+:root{
+  --velvet:#0f2419;   /* бархат */
+  --velvet-2:#173426;
+  --moss:#1f3a2b;     /* фон фото с чашей */
+  --gold:#c8a862;     /* фольга */
+  --gold-soft:rgba(200,168,98,.35);
+  --ivory:#f2ecdf;
+  --mute:#a9b3a6;
+  --f-disp:"Cormorant Garamond",Georgia,serif;
+  --f-body:"Jost",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--velvet);color:var(--ivory);font-family:var(--f-body);font-weight:300;font-size:17px;line-height:1.7;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1300px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.lbl{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:400}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:rgba(15,36,25,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--gold-soft)}
+.top .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;min-height:86px;gap:20px}
+.nav{display:flex;gap:28px;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.nav a{text-decoration:none;color:var(--mute)}.nav a:hover{color:var(--gold)}
+.logo{justify-self:center}.logo img{width:92px}
+.right{display:flex;justify-content:flex-end;align-items:center;gap:22px}
+.right a{text-decoration:none;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.right .b{color:var(--velvet);background:var(--gold);padding:11px 18px;letter-spacing:.14em}
+.burger{display:none;justify-self:end;background:none;border:1px solid var(--gold-soft);color:var(--gold);font:inherit;font-size:13px;letter-spacing:.2em;padding:8px 14px}
+/* экран 1 */
+.hero{position:relative;background:var(--moss);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;min-height:720px;align-items:center;gap:20px}
+.hero .txt{position:relative;z-index:2;padding-block:70px}
+.hero h1{font-family:var(--f-disp);font-weight:300;font-size:clamp(54px,7.4vw,118px);line-height:.92;margin:22px 0 26px;letter-spacing:-.01em}
+.hero h1 i{font-weight:300;color:var(--gold)}
+.hero p{max-width:40ch;color:#cfd5cb;margin:0 0 38px}
+.btn{display:inline-flex;align-items:center;gap:14px;text-decoration:none;font-size:13px;letter-spacing:.22em;text-transform:uppercase;padding:17px 30px;font-weight:400}
+.btn.g{background:var(--gold);color:var(--velvet)}.btn.l{border:1px solid var(--gold-soft);color:var(--ivory);margin-left:12px}
+.hero .ph{position:absolute;right:0;top:0;bottom:0;width:56%}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:center 45%}
+.hero .ph::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--moss) 0%,rgba(31,58,43,0) 35%);z-index:1}
+.hero .line{position:absolute;left:max(20px,calc((100vw - 1300px)/2 + 20px));bottom:40px;display:flex;gap:34px;z-index:2}
+.hero .line div{font-family:var(--f-disp);font-size:16px;color:var(--mute);border-top:1px solid var(--gold-soft);padding-top:10px;min-width:120px}
+.hero .line b{display:block;font-weight:500;font-size:30px;color:var(--ivory);line-height:1.1}
+/* экран 2: коллекция */
+.coll{padding-block:100px 90px;background:var(--velvet)}
+.hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:44px}
+.h2{font-family:var(--f-disp);font-weight:300;font-size:clamp(38px,5vw,72px);line-height:1;margin:12px 0 0}
+.h2 i{color:var(--gold)}
+.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:22px;overflow-x:auto;padding-bottom:18px;scroll-snap-type:x mandatory;scrollbar-color:var(--gold-soft) transparent}
+.it{scroll-snap-align:start;text-decoration:none;display:flex;flex-direction:column}
+.it .im{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--velvet-2)}
+.it .im img{width:100%;height:100%;object-fit:cover;transition:transform 1s}
+.it:hover .im img{transform:scale(1.05)}
+.it .n{position:absolute;top:14px;left:16px;font-family:var(--f-disp);font-style:italic;font-size:20px;color:var(--ivory);text-shadow:0 2px 10px rgba(0,0,0,.5)}
+.it h3{font-family:var(--f-disp);font-weight:500;font-size:26px;margin:16px 0 2px;line-height:1.1}
+.it p{margin:0;color:var(--mute);font-size:15px}
+/* экран 3: мастерство */
+.craft{background:var(--velvet-2);padding-block:110px}
+.craft .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:70px;align-items:center}
+.craft .ph{position:relative}
+.craft .ph img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.craft .ph::after{content:"";position:absolute;inset:16px;border:1px solid var(--gold);pointer-events:none}
+.craft blockquote{margin:24px 0 36px;font-family:var(--f-disp);font-style:italic;font-weight:300;font-size:clamp(26px,3vw,40px);line-height:1.25}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--gold-soft)}
+.facts div{padding:22px 20px 22px 0;border-bottom:1px solid var(--gold-soft)}
+.facts div:nth-child(odd){border-right:1px solid var(--gold-soft)}
+.facts div:nth-child(even){padding-left:24px}
+.facts b{display:block;font-family:var(--f-disp);font-weight:500;font-size:40px;color:var(--gold);line-height:1}
+.facts span{font-size:15px;color:#cfd5cb}
+/* экран 4: подарок + где купить */
+.gift{position:relative;padding-block:120px;overflow:hidden;background:var(--velvet)}
+.gift .bg{position:absolute;inset:0;background:url(img/ig-zefir-choc.jpg) center/cover;opacity:.28;filter:saturate(.7)}
+.gift::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(15,36,25,.4),var(--velvet) 75%)}
+.gift .wrap{position:relative;z-index:2;text-align:center}
+.gift .h2{max-width:16ch;margin:16px auto 20px}
+.gift p{max-width:52ch;margin:0 auto 36px;color:#cfd5cb}
+.chan{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin-top:56px;border-top:1px solid var(--gold-soft);border-bottom:1px solid var(--gold-soft)}
+.chan div{padding:22px 34px;border-right:1px solid var(--gold-soft);min-width:180px}
+.chan div:last-child{border-right:0}
+.chan b{display:block;font-family:var(--f-disp);font-weight:500;font-size:28px}
+.chan span{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.note{font-size:12px;color:var(--mute);margin-top:36px;letter-spacing:.04em}
+@media (max-width:1040px){
+  .nav,.right{display:none}.burger{display:block}
+  .top .wrap{grid-template-columns:auto 1fr}.logo{justify-self:start}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:86px;left:0;right:0;background:var(--velvet);padding:20px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid var(--gold-soft)}
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .hero .ph{position:relative;width:auto;height:420px;margin-inline:-20px}
+  .hero .ph::before{background:linear-gradient(180deg,var(--moss) 0%,rgba(31,58,43,0) 40%)}
+  .hero .txt{padding-block:50px 10px}
+  .hero .line{position:static;padding:24px max(20px,env(safe-area-inset-right,0px)) 40px max(20px,env(safe-area-inset-left,0px));flex-wrap:wrap;gap:20px}
+  .craft .wrap{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  .btn.l{margin:12px 0 0}
+  .rail{grid-auto-columns:78%}
+  .chan div{border-right:0;border-bottom:1px solid var(--gold-soft);width:100%}
+  .chan div:last-child{border-bottom:0}
+  .facts b{font-size:30px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <nav class="nav" id="nav"><a href="#coll">Коллекция</a><a href="#craft">Мастерство</a><a href="#">История</a><a href="#">Новости</a></nav>
+    <a class="logo" href="#"><img src="img/logo-white.svg" alt="Белёвская пастильная мануфактура"></a>
+    <div class="right"><a href="#">Рус · Eng · De · 中</a><a class="b" href="#gift">Где купить</a></div>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">МЕНЮ</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="ph"><img src="img/ig-bowl.jpg" alt="Чаша яблочных меренг и антоновские яблоки на зелёном"></div>
+  <div class="wrap">
+    <div class="txt">
+      <div class="lbl">Пастильная мануфактура · Белёв · 1881</div>
+      <h1>Белёвская <i>пастила</i></h1>
+      <p>Печёная антоновка, взбитый белок и неделя в русской печи. Десерт, который подавали к царскому столу, сегодня делают по тому же рецепту.</p>
+      <a class="btn g" href="#coll">Коллекция</a><a class="btn l" href="#craft">Мастерство</a>
+    </div>
+  </div>
+  <div class="line">
+    <div><b>1881</b>год основания</div>
+    <div><b>~7 дней</b>на кусочек</div>
+    <div><b>3 кг</b>яблок на 1 кг</div>
+  </div>
+</section>
+
+<section class="coll" id="coll">
+  <div class="wrap">
+    <div class="hd"><div><div class="lbl">Коллекция</div><h2 class="h2">Шесть способов <i>любить яблоко</i></h2></div><a class="btn l" style="margin:0" href="#">Весь каталог</a></div>
+    <div class="rail">
+      <a class="it" href="#"><div class="im"><img src="img/ig-bigpastila.jpg" alt=""><span class="n">I</span></div><h3>Белёвская пастила</h3><p>классическая, с клюквой, с кедровым орехом</p></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-flatlay.jpg" alt=""><span class="n">II</span></div><h3>Без добавления сахара</h3><p>яблоки и белок, с ягодами</p></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-zefir-choc.jpg" alt=""><span class="n">III</span></div><h3>Зефир в шоколаде</h3><p>ванильный, антоновка, кофейный</p></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-merengi-cups.jpg" alt=""><span class="n">IV</span></div><h3>Меренги</h3><p>яблочные, в стаканчике</p></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-sukhariki.jpg" alt=""><span class="n">V</span></div><h3>Сухарики</h3><p>из белёвской пастилы</p></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-pack-tea.jpg" alt=""><span class="n">VI</span></div><h3>Смоква</h3><p>яблоко с тыквой или облепихой</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="craft" id="craft">
+  <div class="wrap">
+    <div class="ph"><img src="img/ig-cutting.jpg" alt="Нарезка белёвской пастилы"></div>
+    <div>
+      <div class="lbl">Мастерство</div>
+      <blockquote>Мы печём яблоки сами. Готовое пюре ускорило бы работу, но вкус был бы не тот.</blockquote>
+      <div class="facts">
+        <div><b>XIX в.</b><span>русская печь мануфактуры, топится дровами</span></div>
+        <div><b>12–24 ч</b><span>досушка «пирога» в остывающей печи</span></div>
+        <div><b>100%</b><span>российские яблоки, ягоды и орехи</span></div>
+        <div><b>2010</b><span>год возрождения мануфактуры</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gift" id="gift">
+  <div class="bg" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="lbl">Подарок</div>
+    <h2 class="h2">Коробка, которую <i>открывают вместе</i></h2>
+    <p>Пастила, зефир и меренги в подарочной упаковке. Для дома, гостей и партнёров. Под вашей маркой тоже делаем.</p>
+    <a class="btn g" href="#">Подарочные наборы</a>
+    <div class="chan">
+      <div><b>100+</b><span>магазинов в Москве</span></div>
+      <div><b>Wildberries</b><span>вся Россия</span></div>
+      <div><b>pastila.eu</b><span>Европа</span></div>
+      <div><b>Flowwow</b><span>подарочные наборы</span></div>
+    </div>
+    <p class="note">Концепт 6 из 8. Цитата в блоке «Мастерство» – пересказ интервью руководителя производства.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

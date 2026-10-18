@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Открытки из Белёва</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Bad+Script&family=Fira+Sans+Condensed:wght@400;500&display=swap">
+<style>
+/* Концепт 7. «Открытки из Белёва»: место и история через почтовые открытки. Картон, сепия, зелёные марки с яблоком, штемпели, рукописный текст на обороте. */
+:root{
+  --desk:#e9e1cf;     /* стол, на котором лежат открытки */
+  --card:#fbf7ee;     /* картон открытки */
+  --sepia:#6b5236;
+  --green:#206c2d;    /* марка, цвет логотипа */
+  --ink:#24303a;      /* чернила */
+  --stamp:#9b3a2a;    /* штемпель */
+  --f-disp:"Spectral",Georgia,serif;
+  --f-hand:"Bad Script","Segoe Script",cursive;
+  --f-body:"Fira Sans Condensed",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--desk);color:#2a2620;font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1220px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.hand{font-family:var(--f-hand);color:var(--ink)}
+/* марка с перфорацией: зубцы из фона, середину закрывает картинка */
+.stamp{display:inline-block;padding:7px;background:radial-gradient(circle,transparent 3.5px,var(--card) 4px) -6px -6px/12px 12px;filter:drop-shadow(0 2px 3px rgba(0,0,0,.18))}
+.stamp .in{background:var(--green);color:var(--card);display:grid;place-items:center;text-align:center}
+.pm{position:absolute;width:118px;height:118px;border-radius:50%;border:2px solid var(--stamp);color:var(--stamp);display:grid;place-items:center;text-align:center;font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.75;transform:rotate(-14deg)}
+.pm::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px solid var(--stamp)}
+.pm b{display:block;font-family:var(--f-disp);font-size:22px;letter-spacing:.02em}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--card);border-bottom:1px solid rgba(107,82,54,.25)}
+.top .wrap{display:flex;align-items:center;gap:26px;min-height:74px}
+.logo img{width:80px}
+.nav{display:flex;gap:24px;margin-left:auto;font-size:16px}
+.nav a{text-decoration:none}.nav a:hover{color:var(--green)}
+.cta{background:var(--green);color:var(--card);text-decoration:none;padding:10px 18px;border-radius:2px;font-weight:500;white-space:nowrap}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--green);color:var(--green);font:inherit;padding:6px 14px}
+/* экран 1: двусторонняя открытка */
+.hero{padding-block:56px 70px}
+.hero .ttl{text-align:center;margin-bottom:34px}
+.hero .ttl .hand{font-size:clamp(28px,3.4vw,44px);color:var(--sepia)}
+.hero h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(40px,5.6vw,80px);line-height:1;margin:4px 0 0}
+.pc{display:grid;grid-template-columns:1.05fr 1fr;background:var(--card);box-shadow:0 30px 60px -30px rgba(60,40,20,.5),0 2px 0 rgba(0,0,0,.05);transform:rotate(-.6deg);max-width:1080px;margin:0 auto}
+.pc .face{padding:14px;border-right:1px dashed rgba(107,82,54,.35)}
+.pc .face img{width:100%;height:100%;min-height:420px;object-fit:cover;filter:sepia(.18) saturate(1.05)}
+.pc .back{position:relative;padding:34px 34px 30px;display:flex;flex-direction:column}
+.pc .back .stamp{position:absolute;top:22px;right:24px}
+.pc .back .stamp .in{width:84px;height:100px;font-family:var(--f-disp);font-size:13px;line-height:1.1}
+.pc .back .stamp svg{width:40px;height:40px;margin-bottom:4px}
+.pc .back .pm{top:70px;right:84px}
+.pc .msg{font-size:clamp(20px,2vw,25px);line-height:1.5;margin:150px 0 22px;max-width:30ch}
+.pc .addr{margin-top:auto;display:grid;gap:12px}
+.pc .addr div{border-bottom:1px solid rgba(36,48,58,.35);padding-bottom:4px;display:flex;gap:12px;align-items:baseline}
+.pc .addr small{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--sepia);flex:none}
+.pc .addr span{font-family:var(--f-hand);font-size:20px;color:var(--ink)}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:40px}
+.btn{display:inline-block;text-decoration:none;font-weight:500;padding:14px 24px;border-radius:2px}
+.btn.g{background:var(--green);color:var(--card)}.btn.o{border:1.5px solid var(--sepia);color:var(--sepia)}
+/* экран 2: три века */
+.ages{padding-block:70px}
+.h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(32px,4.2vw,56px);line-height:1.05;margin:0}
+.ages .h2{text-align:center;margin-bottom:46px}
+.row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px}
+.mini{background:var(--card);padding:12px 12px 18px;box-shadow:0 18px 30px -20px rgba(60,40,20,.55);position:relative}
+.mini:nth-child(1){transform:rotate(-2deg)}.mini:nth-child(2){transform:rotate(1.2deg) translateY(16px)}.mini:nth-child(3){transform:rotate(-1deg)}
+.mini img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.mini .y{position:absolute;top:22px;left:22px;background:var(--card);font-family:var(--f-disp);font-size:24px;padding:2px 12px}
+.mini h3{font-family:var(--f-disp);font-weight:600;font-size:21px;margin:14px 4px 4px}
+.mini p{margin:0 4px;font-size:16px}
+.mini .hand{display:block;margin:10px 4px 0;font-size:18px;color:var(--sepia)}
+.sep{filter:sepia(.75) contrast(1.05) brightness(.95)}
+/* экран 3: мануфактура */
+.man{background:var(--card);padding-block:84px;border-block:1px solid rgba(107,82,54,.2)}
+.man .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.man p{max-width:50ch}
+.steps{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:26px}
+.st{text-align:center}
+.st .stamp .in{aspect-ratio:3/3.6;width:100%;font-family:var(--f-disp);font-size:24px}
+.st:nth-child(even) .stamp .in{background:var(--stamp)}
+.st span{display:block;font-size:14px;margin-top:8px;line-height:1.25}
+.man .ph{position:relative}
+.man .ph img{width:100%;aspect-ratio:4/5;object-fit:cover;border:12px solid #fff;box-shadow:0 20px 40px -24px rgba(60,40,20,.6)}
+.man .ph .hand{position:absolute;bottom:-20px;left:20px;background:var(--card);padding:4px 14px;font-size:22px;transform:rotate(-3deg)}
+/* экран 4: увезти из Белёва */
+.take{padding-block:84px}
+.take .hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.sg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.sgi{text-decoration:none;text-align:center}
+.sgi .stamp{display:block}
+.sgi .stamp .in{background:#fff;aspect-ratio:4/5;padding:12px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;color:#2a2620}
+.sgi .stamp img{flex:1;min-height:0;object-fit:contain;width:100%}
+.sgi .stamp b{font-family:var(--f-disp);font-weight:400;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-top:6px}
+.sgi h3{font-family:var(--f-disp);font-weight:600;font-size:19px;margin:12px 0 2px}
+.sgi p{margin:0;font-size:15px;color:var(--sepia)}
+.where{margin-top:44px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;background:var(--card);border:1px solid rgba(107,82,54,.3)}
+.where div{padding:18px 20px;border-right:1px dashed rgba(107,82,54,.35)}
+.where div:last-child{border-right:0}
+.where b{display:block;font-family:var(--f-disp);font-weight:600;font-size:22px;color:var(--green)}
+.where span{font-size:14px}
+.note{font-size:13px;opacity:.65;margin-top:22px}
+@media (max-width:1000px){
+  .nav{display:none}.burger{display:block}.cta{display:none}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:74px;left:0;right:0;background:var(--card);padding:16px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid rgba(107,82,54,.25)}
+  .pc{grid-template-columns:1fr;transform:none}
+  .pc .face{border-right:0;border-bottom:1px dashed rgba(107,82,54,.35)}
+  .pc .face img{min-height:300px}
+  .row{grid-template-columns:1fr;gap:26px}.mini:nth-child(2){transform:rotate(1.2deg)}
+  .man .wrap{grid-template-columns:1fr}
+  .sg{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .where{grid-template-columns:1fr 1fr}.where div:nth-child(2){border-right:0}.where div:nth-child(-n+2){border-bottom:1px dashed rgba(107,82,54,.35)}
+}
+@media (max-width:560px){
+  .pc .back{padding:26px 20px}
+  .pc .back .pm{display:none}
+  .pc .msg{margin-top:96px}
+  .steps{grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}.st .stamp .in{font-size:17px}.st span{font-size:12px}
+  .sg{gap:14px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#ages">История</a><a href="#man">Мануфактура</a><a href="#take">Каталог</a><a href="#">Где купить</a><a href="#">Новости</a><a href="#">Контакты</a></nav>
+    <a class="cta" href="#take">Каталог</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="ttl"><div class="hand">Привет из Белёва!</div><h1>Белёвская пастила</h1></div>
+    <div class="pc">
+      <div class="face"><img src="img/ig-belev.jpg" alt="Белёв: монастырь над городом и коробка пастилы на траве"></div>
+      <div class="back">
+        <span class="stamp"><span class="in"><svg viewBox="0 0 40 40" fill="none" stroke="#fbf7ee" stroke-width="2"><path d="M20 12c-6-4-14 0-12 10 2 9 8 12 12 9 4 3 10 0 12-9 2-10-6-14-12-10Z"/><path d="M20 12c0-4 2-6 5-7"/></svg>1881<br>Белёв</span></span>
+        <div class="pm"><div>Белёв<b>1881</b>Тульск. губ.</div></div>
+        <p class="msg hand">Здесь с 1881 года пекут антоновку, взбивают с белком и неделю сушат в русской печи. Посылаю тебе кусочек к чаю!</p>
+        <div class="addr">
+          <div><small>Куда</small><span>к вашему чаю</span></div>
+          <div><small>Откуда</small><span>Белёв, ул. Рабочая, 134</span></div>
+          <div><small>Тел.</small><span>+7 985 770-87-87</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="btns"><a class="btn g" href="#take">Выбрать пастилу</a><a class="btn o" href="#ages">Листать открытки</a></div>
+  </div>
+</section>
+
+<section class="ages" id="ages">
+  <div class="wrap">
+    <h2 class="h2">Три открытки, одна история</h2>
+    <div class="row">
+      <article class="mini"><img class="sep" src="img/ig-samovar.jpg" alt=""><span class="y">1881</span><h3>Завод купца Прохорова</h3><p>Яблоки пекут, взбивают с яйцом и мёдом, сушат в печи. Пастилу везут в Москву, Петербург, Тифлис, Варшаву и Ригу.</p><span class="hand">так всё началось</span></article>
+      <article class="mini"><img src="img/ig-cutting.jpg" alt=""><span class="y">2010</span><h3>Мануфактура возвращает рецепт</h3><p>До этого пастилу делали только местные хозяйки по бабушкиным рецептам. Теперь – снова в магазинах.</p><span class="hand">возрождение</span></article>
+      <article class="mini"><img src="img/ig-summer.jpg" alt=""><span class="y">сегодня</span><h3>Десятки видов</h3><p>Пастила, зефир, мармелад, меренги, сухарики и смоква. Есть линейка без добавления сахара.</p><span class="hand">и это только начало</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="man" id="man">
+  <div class="wrap">
+    <div>
+      <h2 class="h2">Как делают пастилу в Белёве</h2>
+      <p>Около семи дней от яблока до кусочка. Русская печь построена в XIX веке и топится дровами. На килограмм пастилы уходит 3 кг антоновки, 100 г сахара и белок одного яйца.</p>
+      <div class="steps">
+        <div class="st"><span class="stamp" style="display:block"><span class="in">I</span></span><span>печём яблоки</span></div>
+        <div class="st"><span class="stamp" style="display:block"><span class="in">II</span></span><span>взбиваем с белком</span></div>
+        <div class="st"><span class="stamp" style="display:block"><span class="in">III</span></span><span>сушим пласты</span></div>
+        <div class="st"><span class="stamp" style="display:block"><span class="in">IV</span></span><span>собираем пирог</span></div>
+        <div class="st"><span class="stamp" style="display:block"><span class="in">V</span></span><span>досушиваем 12–24 ч</span></div>
+      </div>
+    </div>
+    <div class="ph"><img src="img/ig-garden-table.jpg" alt="Коробка пастилы на садовом столике"><span class="hand">наш сад, лето</span></div>
+  </div>
+</section>
+
+<section class="take" id="take">
+  <div class="wrap">
+    <div class="hd"><h2 class="h2">Увезти из Белёва</h2><a class="btn o" href="#">Весь каталог</a></div>
+    <div class="sg">
+      <a class="sgi" href="#"><span class="stamp"><span class="in"><img src="img/cut-apple.png" alt=""><b>Белёв · 1881</b></span></span><h3>Белёвская пастила</h3><p>классическая и с ягодами</p></a>
+      <a class="sgi" href="#"><span class="stamp"><span class="in"><img src="img/cut-zef.png" alt=""><b>Белёв · 1881</b></span></span><h3>Белёвский зефир</h3><p>и в шоколаде</p></a>
+      <a class="sgi" href="#"><span class="stamp"><span class="in"><img src="img/cut-merengi.png" alt=""><b>Белёв · 1881</b></span></span><h3>Меренги</h3><p>яблочные</p></a>
+      <a class="sgi" href="#"><span class="stamp"><span class="in"><img src="img/cut-smokva.png" alt=""><b>Белёв · 1881</b></span></span><h3>Смоква</h3><p>без добавления сахара</p></a>
+    </div>
+    <div class="where">
+      <div><b>100+</b><span>магазинов в Москве</span></div>
+      <div><b>Сочи · Ростов</b><span>3 магазина</span></div>
+      <div><b>Wildberries</b><span>доставка по России</span></div>
+      <div><b>pastila.eu</b><span>доставка по Европе</span></div>
+    </div>
+    <p class="note">Концепт 7 из 8. Марки и штемпели нарисованы для концепта.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>
