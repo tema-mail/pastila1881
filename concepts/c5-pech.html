@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Медленная печь</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&family=Onest:wght@300;400;600&display=swap">
+<style>
+/* Концепт 5. «Печь»: медленная еда. Сажа, жар углей, слоновая кость. Первый экран – живые искры над пастилой вместо видео; дальше – процесс как одна непрерывная шкала. */
+:root{
+  --soot:#121010;     /* сажа */
+  --brick:#1d1714;    /* печной кирпич в тени */
+  --ember:#e2692c;    /* угли */
+  --glow:#f3b25c;     /* жар */
+  --ivory:#efe7da;    /* белок, сливки */
+  --ash:#8d847a;
+  --f-disp:"Prata",Georgia,serif;
+  --f-body:"Onest",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--soot);color:var(--ivory);font-family:var(--f-body);font-weight:300;font-size:17px;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* шапка */
+.top{position:absolute;top:0;left:0;right:0;z-index:20;padding-top:env(safe-area-inset-top,0px)}
+.top .wrap{display:flex;align-items:center;gap:30px;min-height:84px}
+.logo img{width:80px;opacity:.95}
+.nav{display:flex;gap:30px;font-size:14px;letter-spacing:.12em;text-transform:uppercase;margin-left:auto}
+.nav a{text-decoration:none;color:var(--ash)}.nav a:hover{color:var(--glow)}
+.tel{font-size:15px;text-decoration:none;color:var(--ivory);white-space:nowrap}
+.tel small{display:block;font-size:11px;color:var(--ash);letter-spacing:.08em}
+.burger{display:none;margin-left:auto;background:none;border:1px solid var(--ash);color:var(--ivory);font:inherit;font-size:14px;padding:6px 14px;letter-spacing:.1em}
+/* экран 1 */
+.hero{position:relative;min-height:min(900px,100vh);display:grid;align-items:center;overflow:hidden;background:radial-gradient(ellipse 60% 50% at 66% 78%,rgba(226,105,44,.38),transparent 70%),radial-gradient(ellipse 40% 30% at 66% 90%,rgba(243,178,92,.35),transparent 70%),var(--soot)}
+#sparks{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding-block:120px 60px;width:100%}
+.hero .lbl{font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--glow)}
+.hero h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(46px,7vw,108px);line-height:.98;margin:20px 0 26px;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 span{color:var(--glow)}
+.hero p{max-width:42ch;color:#cfc6b8;margin:0 0 34px}
+.btn{display:inline-flex;gap:12px;align-items:center;text-decoration:none;font-weight:600;font-size:15px;letter-spacing:.06em;padding:16px 28px;border-radius:999px}
+.btn.e{background:var(--ember);color:var(--soot)}
+.btn.e:hover{background:var(--glow)}
+.btn.l{border:1px solid rgba(239,231,218,.35);margin-left:12px}
+.piece{position:relative;justify-self:center;width:min(520px,100%)}
+.piece img{width:100%;filter:drop-shadow(0 40px 60px rgba(226,105,44,.35)) saturate(1.05);animation:breathe 6s ease-in-out infinite}
+@keyframes breathe{50%{filter:drop-shadow(0 40px 80px rgba(243,178,92,.5)) saturate(1.1)}}
+.temp{position:absolute;right:0;top:4%;font-family:var(--f-disp);font-size:15px;color:var(--ash);text-align:right;line-height:1.3}
+.temp b{display:block;font-weight:400;font-size:44px;color:var(--glow);font-variant-numeric:tabular-nums}
+.scroll{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);font-size:12px;letter-spacing:.3em;color:var(--ash);z-index:2}
+/* экран 2: шкала процесса */
+.proc{padding-block:110px;background:var(--brick)}
+.proc h2,.oven h2,.taste h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(34px,4.6vw,62px);line-height:1.04;margin:0;text-wrap:balance}
+.proc .top2{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:64px}
+.proc .top2 p{margin:0;color:#c9bfb1;max-width:46ch}
+.bar{position:relative;height:6px;background:rgba(239,231,218,.12);border-radius:3px;margin-bottom:36px;overflow:hidden}
+.bar i{position:absolute;inset:0;width:0;background:linear-gradient(90deg,var(--glow),var(--ember));animation:fill 7s cubic-bezier(.4,0,.2,1) .4s forwards}
+@keyframes fill{to{width:100%}}
+.stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px}
+.sg{min-width:0;border-top:1px solid rgba(239,231,218,.18);padding-top:20px}
+.sg .k{font-family:var(--f-disp);color:var(--glow);font-size:15px}
+.sg h3{font-family:var(--f-disp);font-weight:400;font-size:24px;margin:8px 0 8px;line-height:1.15}
+.sg p{margin:0;color:#b9afa2;font-size:15px}
+.sg .t{display:inline-block;margin-top:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember)}
+.legend{margin-top:40px;display:flex;justify-content:space-between;color:var(--ash);font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+/* экран 3: печь */
+.oven{position:relative;padding-block:120px;overflow:hidden}
+.oven .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.oven .ph{position:relative;border-radius:4px;overflow:hidden;aspect-ratio:4/5}
+.oven .ph img{width:100%;height:100%;object-fit:cover;filter:sepia(.35) contrast(1.05) brightness(.85)}
+.oven .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(226,105,44,.45),transparent 55%);mix-blend-mode:screen}
+.oven .ph .cap{position:absolute;left:18px;bottom:16px;z-index:2;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.oven blockquote{margin:30px 0 0;font-family:var(--f-disp);font-size:clamp(22px,2.4vw,30px);line-height:1.3;color:var(--ivory);border-left:2px solid var(--ember);padding-left:24px}
+.oven cite{display:block;margin-top:14px;font-family:var(--f-body);font-style:normal;font-size:14px;color:var(--ash)}
+.oven .f{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:36px}
+.oven .f div{border:1px solid rgba(239,231,218,.15);padding:18px}
+.oven .f b{font-family:var(--f-disp);font-weight:400;font-size:30px;color:var(--glow);display:block}
+.oven .f span{font-size:14px;color:#b9afa2}
+/* экран 4: вкус */
+.taste{padding-block:100px 120px;background:linear-gradient(180deg,var(--soot),#1a120e)}
+.taste .hd{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:46px}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.it{position:relative;border-radius:6px;overflow:hidden;background:var(--brick);text-decoration:none;display:flex;flex-direction:column}
+.it .im{aspect-ratio:1/1;overflow:hidden}
+.it .im img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.it:hover .im img{transform:scale(1.06)}
+.it .b{padding:22px}
+.it h3{font-family:var(--f-disp);font-weight:400;font-size:24px;margin:0 0 6px}
+.it p{margin:0;color:#b9afa2;font-size:15px}
+.it .kc{margin-top:14px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--glow)}
+.note{font-size:13px;color:var(--ash);margin-top:26px}
+@media (max-width:1000px){
+  .nav,.tel{display:none}.burger{display:block}
+  .nav.open{display:flex;flex-direction:column;gap:16px;position:absolute;top:84px;left:0;right:0;background:var(--soot);padding:20px max(20px,env(safe-area-inset-left,0px));border-bottom:1px solid #2c2522}
+  .hero .wrap,.proc .top2,.oven .wrap{grid-template-columns:1fr}
+  .stages{grid-template-columns:1fr 1fr}
+  .row3{grid-template-columns:1fr}
+  .temp{position:static;text-align:left;margin-bottom:10px}
+}
+@media (max-width:560px){
+  .stages{grid-template-columns:1fr}
+  .btn.l{margin:12px 0 0}
+  .legend{font-size:11px}
+}
+@media (prefers-reduced-motion:reduce){.piece img,.bar i{animation:none}.bar i{width:100%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo-white.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#proc">Процесс</a><a href="#oven">Печь</a><a href="#taste">Каталог</a><a href="#">Где купить</a><a href="#">Контакты</a></nav>
+    <a class="tel" href="tel:+79857708787">+7 985 770-87-87<small>пн–пт 9:00–19:00</small></a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">МЕНЮ</button>
+  </div>
+</header>
+
+<section class="hero">
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div>
+      <div class="lbl">Белёв · русская печь XIX века</div>
+      <h1>Семь дней. <span>Одна печь.</span> С 1881 года.</h1>
+      <p>Пастилу нельзя поторопить. Яблоки пекутся, пласты сохнут, «пирог» досыхает в остывающей печи. Мы просто не мешаем.</p>
+      <a class="btn e" href="#proc">Как это происходит</a><a class="btn l" href="#taste">Выбрать пастилу</a>
+    </div>
+    <div class="piece">
+      <div class="temp"><b id="hrs">12–24</b>часа досушки<br>в остывающей печи</div>
+      <img src="img/cut-plate.png" alt="Нарезанная белёвская пастила на блюде">
+    </div>
+  </div>
+  <div class="scroll">ЛИСТАЙТЕ ↓</div>
+</section>
+
+<section class="proc" id="proc">
+  <div class="wrap">
+    <div class="top2">
+      <h2>Пять стадий, около недели</h2>
+      <p>Заварная пастила готовится гораздо быстрее. Белёвская проходит путь от яблока до кусочка в среднем за 7 дней, и сократить его нельзя без потери вкуса.</p>
+    </div>
+    <div class="bar" aria-hidden="true"><i></i></div>
+    <div class="stages">
+      <div class="sg"><div class="k">I</div><h3>Печём</h3><p>Антоновские яблоки запекаем целиком, без готового пюре.</p><span class="t">огонь</span></div>
+      <div class="sg"><div class="k">II</div><h3>Взбиваем</h3><p>Печёное яблоко взбиваем с сахаром и яичным белком.</p><span class="t">воздух</span></div>
+      <div class="sg"><div class="k">III</div><h3>Сушим</h3><p>Масса тонкими пластами сохнет в русской печи.</p><span class="t">жар</span></div>
+      <div class="sg"><div class="k">IV</div><h3>Собираем</h3><p>Пласты складываем в «пирог», каждый слой промазываем яблочно-белковой массой.</p><span class="t">руки</span></div>
+      <div class="sg"><div class="k">V</div><h3>Досушиваем</h3><p>«Пирог» настаивается и доходит в остывающей печи 12–24 часа.</p><span class="t">тишина</span></div>
+    </div>
+    <div class="legend"><span>яблоко</span><span>≈ 7 дней</span><span>кусочек</span></div>
+  </div>
+</section>
+
+<section class="oven" id="oven">
+  <div class="wrap">
+    <div class="ph"><img src="img/ig-cutting.jpg" alt="Нарезка белёвской пастилы"><span class="cap">кадр из Instagram @pastila1881</span></div>
+    <div>
+      <h2>Печь построили в XIX веке. Её до сих пор топят дровами</h2>
+      <blockquote>Мастера готовят пастилу в русской печи и топят её дровами, как во времена Прохорова.<cite>из интервью руководителя производства</cite></blockquote>
+      <div class="f">
+        <div><b>3 кг</b><span>антоновки на 1 кг пастилы</span></div>
+        <div><b>1 белок</b><span>и 100 г сахара на килограмм</span></div>
+        <div><b>Белёв</b><span>город, где делают эту пастилу</span></div>
+        <div><b>2010</b><span>возрождение мануфактуры</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="taste" id="taste">
+  <div class="wrap">
+    <div class="hd"><h2>Попробуйте медленную пастилу</h2><a class="btn l" style="margin:0" href="#">Весь каталог →</a></div>
+    <div class="row3">
+      <a class="it" href="#"><div class="im"><img src="img/site-slices-dark.jpg" alt=""></div><div class="b"><h3>Классическая, 200 г</h3><p>яблоки, сахар, яичный белок</p><div class="kc">337 ккал / 100 г</div></div></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-bigpastila.jpg" alt=""></div><div class="b"><h3>С кедровым орехом, 200 г</h3><p>яблоки, кедровые орехи, сахар, яичный белок</p><div class="kc">329 ккал / 100 г</div></div></a>
+      <a class="it" href="#"><div class="im"><img src="img/ig-zefir-choc.jpg" alt=""></div><div class="b"><h3>Зефир «Антоновка» в шоколаде</h3><p>на яблочном пюре из антоновки</p><div class="kc">белёвский зефир</div></div></a>
+    </div>
+    <p class="note">Концепт 5 из 7, свой. Вместо видео на первом экране – живые искры (canvas). При вёрстке сюда встаёт ролик из рилса о производстве.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+// искры над пастилой
+(()=>{const c=document.getElementById('sparks'),x=c.getContext('2d');if(!x)return;
+const still=matchMedia('(prefers-reduced-motion: reduce)').matches;let W,H,P=[];
+function rs(){const r=c.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=r.width;H=r.height;c.width=W*d;c.height=H*d;x.setTransform(d,0,0,d,0,0)}
+function sp(){const cx=W*(W<1000?.5:.68);return{x:cx+(Math.random()-.5)*W*.32,y:H*(.82+Math.random()*.1),vx:(Math.random()-.5)*.4,vy:-(.4+Math.random()*1.3),r:.6+Math.random()*2,l:0,m:120+Math.random()*220}}
+rs();addEventListener('resize',rs);for(let i=0;i<90;i++){const p=sp();p.l=Math.random()*p.m;P.push(p)}
+function f(){x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
+for(const p of P){p.l++;p.x+=p.vx+Math.sin(p.l*.03)*.3;p.y+=p.vy;const a=1-p.l/p.m;
+if(a<=0){Object.assign(p,sp());continue}
+x.beginPath();x.fillStyle=`rgba(243,${140+Math.round(60*a)},70,${a*.85})`;x.arc(p.x,p.y,p.r*(.6+a*.6),0,7);x.fill()}
+x.globalCompositeOperation='source-over';if(!still)requestAnimationFrame(f)}
+f()})();
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пастила из ленты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Marck+Script&family=Manrope:wght@400;500;700&display=swap">
+<style>
+/* Концепт 2. Как в Instagram бренда: бутылочный зелёный + мята + сливки, прописные антиквой и рукописный акцент, кружки-хайлайты, ленточки «Новости компании». */
+:root{
+  --bottle:#1f3a2b;   /* фон кадров с тёмной зеленью, совпадает с фото */
+  --deep:#142a1e;
+  --mint:#d4e7d2;     /* мятные посты и подарочная коробка */
+  --cream:#f7f3ea;
+  --apple:#9cc54a;
+  --berry:#d7405a;    /* розовая ленточка «новости компании» */
+  --ink:#1c2a21;
+  --f-caps:"Forum","Times New Roman",serif;
+  --f-script:"Marck Script","Segoe Script",cursive;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--cream);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.caps{font-family:var(--f-caps);text-transform:uppercase;letter-spacing:.04em;font-weight:400}
+.scr{font-family:var(--f-script);text-transform:none;letter-spacing:0}
+/* ===== шапка ===== */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bottle);color:var(--cream)}
+.top .wrap{display:flex;align-items:center;gap:28px;min-height:72px}
+.logo img{width:86px}
+.nav{display:flex;gap:26px;font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin-left:auto}
+.nav a{text-decoration:none;opacity:.82}.nav a:hover{opacity:1}
+.ig{display:flex;align-items:center;gap:8px;font-size:14px;text-decoration:none;border:1px solid rgba(247,243,234,.4);border-radius:999px;padding:7px 14px}
+.ig svg{width:18px;height:18px}
+.buy{background:var(--mint);color:var(--bottle);text-decoration:none;font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;white-space:nowrap}
+.burger{display:none;margin-left:auto;background:none;border:1px solid rgba(247,243,234,.5);border-radius:999px;color:var(--cream);font:inherit;padding:6px 14px}
+/* ===== экран 1 ===== */
+.hero{background:var(--bottle);color:var(--cream);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:24px;min-height:640px}
+.hero .txt{padding-block:60px}
+.hero .lbl{font-size:13px;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+.hero h1{font-size:clamp(46px,6.6vw,92px);line-height:.98;margin:18px 0 6px;text-wrap:balance}
+.hero h1 .scr{display:block;font-size:.62em;color:var(--apple);margin-top:6px;line-height:1.1}
+.hero p{max-width:44ch;font-size:17px;opacity:.85;margin:22px 0 30px}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:700}
+.pill.mint{background:var(--mint);color:var(--bottle)}
+.pill.ghost{border:1px solid rgba(247,243,234,.45);color:var(--cream);margin-left:10px}
+.hero .pic{align-self:stretch;position:relative;min-height:420px}
+.hero .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 40%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 22%);mask-image:linear-gradient(90deg,transparent 0,#000 22%)}
+.hero .badge{position:absolute;left:8%;bottom:12%;background:var(--cream);color:var(--bottle);border-radius:50%;width:132px;height:132px;display:grid;place-items:center;text-align:center;line-height:1.05;transform:rotate(-10deg)}
+.hero .badge b{font-family:var(--f-caps);font-weight:400;font-size:34px;display:block}
+.hero .badge span{font-family:var(--f-script);font-size:17px}
+/* ===== экран 2: хайлайты ===== */
+.hl{padding-block:70px 80px;background:var(--cream)}
+.hl h2{font-size:clamp(30px,3.8vw,48px);margin:0 0 6px;text-align:center}
+.hl .sub{text-align:center;font-family:var(--f-script);font-size:26px;color:var(--bottle);margin:0 0 38px}
+.circles{display:flex;gap:28px;justify-content:center;flex-wrap:wrap}
+.c{width:126px;text-align:center;text-decoration:none}
+.c .r{width:126px;height:126px;border-radius:50%;padding:5px;background:conic-gradient(var(--apple),var(--bottle),var(--apple));transition:transform .25s}
+.c:hover .r{transform:scale(1.05)}
+.c .r img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:4px solid var(--cream);background:var(--mint)}
+.c span{display:block;margin-top:10px;font-size:14px;font-weight:500}
+.newp{margin-top:70px;display:grid;grid-template-columns:.9fr 1.1fr;border-radius:28px;overflow:hidden;background:var(--mint)}
+.newp img{width:100%;height:100%;object-fit:cover;max-height:520px}
+.newp .t{padding:48px;align-self:center}
+.newp .t .lbl{display:inline-block;background:var(--berry);color:#fff;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+.newp h3{font-size:clamp(34px,4vw,54px);line-height:1;margin:18px 0 4px;color:var(--bottle)}
+.newp h3 .scr{display:block;font-size:.6em;color:var(--berry)}
+.newp p{max-width:46ch}
+.flav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 26px}
+.flav span{border:1px solid var(--bottle);border-radius:999px;padding:5px 14px;font-size:14px}
+.pill.dark{background:var(--bottle);color:var(--cream)}
+/* ===== экран 3: к чаю ===== */
+.tea{background:var(--deep);color:var(--cream);padding-block:90px}
+.tea .head{display:flex;justify-content:space-between;gap:20px;align-items:end;flex-wrap:wrap;margin-bottom:36px}
+.tea h2{font-size:clamp(34px,4.4vw,58px);margin:0;line-height:1}
+.tea h2 .scr{display:block;color:var(--apple);font-size:.62em}
+.tea .head p{max-width:40ch;opacity:.8;margin:0}
+.mos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:220px;gap:14px}
+.mos figure{margin:0;position:relative;overflow:hidden;border-radius:18px}
+.mos img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.mos figure:hover img{transform:scale(1.05)}
+.mos figcaption{position:absolute;left:14px;bottom:12px;right:14px;font-family:var(--f-script);font-size:24px;line-height:1.1;text-shadow:0 2px 12px rgba(0,0,0,.55)}
+.mos .a{grid-column:span 2;grid-row:span 2}
+.mos .b{grid-row:span 2}
+/* ===== экран 4: новости ===== */
+.news{padding-block:90px;background:var(--cream)}
+.news .head{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:16px;margin-bottom:36px}
+.news h2{font-size:clamp(34px,4.4vw,58px);margin:0;line-height:1;color:var(--bottle)}
+.ribbons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.rb{background:#fff;border-radius:24px;padding:16px 16px 22px;position:relative}
+.rb .ph{position:relative;border-radius:16px 60px 16px 16px;aspect-ratio:4/3;background:var(--mint)}
+.rb .ph img{width:100%;height:100%;object-fit:cover;border-radius:16px 60px 16px 16px}
+.rb .tag{position:absolute;left:14px;bottom:-14px;transform:rotate(-6deg);background:var(--berry);color:#fff;font-family:var(--f-caps);text-transform:uppercase;font-size:17px;padding:6px 14px;border-radius:999px}
+.rb h3{font-size:18px;line-height:1.3;margin:28px 4px 6px;font-weight:700;color:var(--bottle)}
+.rb p{margin:0 4px;font-size:14px;opacity:.75}
+.feed{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:center;background:var(--bottle);color:var(--cream);border-radius:28px;padding:30px}
+.feed .who{display:flex;gap:16px;align-items:center}
+.feed .ava{width:84px;height:84px;border-radius:50%;background:var(--cream);display:grid;place-items:center;padding:8px;flex:none}
+.feed .who b{font-size:20px;display:block}
+.feed .who span{opacity:.75;font-size:14px}
+.feed .grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.feed .grid img{aspect-ratio:4/5;object-fit:cover;border-radius:10px;width:100%}
+.note{font-size:13px;opacity:.55;margin-top:22px}
+@media (max-width:1000px){
+  .nav,.ig{display:none}.burger{display:block}.buy{display:none}
+  .nav.open{display:flex;position:absolute;top:72px;left:0;right:0;flex-direction:column;gap:14px;background:var(--bottle);padding:18px max(20px,env(safe-area-inset-left,0px)) 24px}
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .hero .pic{min-height:380px;margin-inline:-20px}
+  .hero .pic img{-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 25%);mask-image:linear-gradient(180deg,transparent 0,#000 25%)}
+  .newp{grid-template-columns:1fr}.newp img{max-height:360px}
+  .mos{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:180px}
+  .ribbons{grid-template-columns:1fr}
+  .feed{grid-template-columns:1fr}.feed .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  .c,.c .r{width:96px}.c .r{height:96px}.circles{gap:16px}
+  .newp .t{padding:28px 22px}
+  .pill.ghost{margin:12px 0 0}
+  .hero .badge{width:104px;height:104px}.hero .badge b{font-size:26px}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo-white.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#">О нас</a><a href="#hl">Каталог</a><a href="#">Где купить</a><a href="#tea">Рецепты</a><a href="#news">Новости</a><a href="#">Контакты</a></nav>
+    <a class="ig" href="https://www.instagram.com/pastila1881/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>32,2 тыс.</a>
+    <a class="buy" href="#">Где купить</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="txt">
+      <div class="lbl">Белёв · с 1881 года</div>
+      <h1 class="caps">Белёвская пастила<span class="scr">из антоновских яблок</span></h1>
+      <p>Натуральные яблочные лакомства ручной работы: пастила, зефир, меренги, сухарики и смоква. Создано в России.</p>
+      <a class="pill mint" href="#hl">Смотреть вкусы</a><a class="pill ghost" href="#">Заказать</a>
+    </div>
+    <div class="pic">
+      <img src="img/ig-bowl.jpg" alt="Чаша с яблочными меренгами и зелёные яблоки">
+      <div class="badge"><div><b>1881</b><span>храним традиции</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="hl" id="hl">
+  <div class="wrap">
+    <h2 class="caps">Что вы любите к чаю?</h2>
+    <p class="sub">выберите свой вкус</p>
+    <div class="circles">
+      <a class="c" href="#"><div class="r"><img src="img/ig-bigpastila.jpg" alt=""></div><span>Пастила</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-zefir-choc.jpg" alt=""></div><span>Зефир</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-meringue.jpg" alt=""></div><span>Меренги</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-sukhariki.jpg" alt=""></div><span>Сухарики</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-pack-tea.jpg" alt=""></div><span>Смоква</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-raspberry.jpg" alt=""></div><span>Кусочек</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-tea-hill.jpg" alt=""></div><span>Рецепты</span></a>
+      <a class="c" href="#"><div class="r"><img src="img/ig-flatlay.jpg" alt=""></div><span>Где купить?</span></a>
+    </div>
+    <div class="newp">
+      <img src="img/ig-raspberry.jpg" alt="Батончик «Кусочек» среди малины">
+      <div class="t">
+        <span class="lbl">Новинка</span>
+        <h3 class="caps">«Кусочек»<span class="scr">полезный перекус</span></h3>
+        <p>Нежная белёвская пастила в индивидуальной упаковке. Удобно взять с собой на работу, в школу или на тренировку.</p>
+        <div class="flav"><span>малина</span><span>вишня</span><span>черника</span><span>с вареньем</span></div>
+        <a class="pill dark" href="#">Купить на Wildberries</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tea" id="tea">
+  <div class="wrap">
+    <div class="head">
+      <h2 class="caps">Вкус летнего вечера<span class="scr">белёвская пастила к чаю</span></h2>
+      <p>Самовар, кружевная скатерть, яблоки из сада. Подаём пастилу так, как её подавали в Белёве больше ста лет назад.</p>
+    </div>
+    <div class="mos">
+      <figure class="a"><img src="img/ig-tea-hill.jpg" alt=""><figcaption>чай на закате</figcaption></figure>
+      <figure class="b"><img src="img/ig-garden-table.jpg" alt=""><figcaption>пикник в саду</figcaption></figure>
+      <figure><img src="img/ig-zefir-lilac.jpg" alt=""><figcaption>зефир и сирень</figcaption></figure>
+      <figure><img src="img/ig-cocoa.jpg" alt=""><figcaption>утро с какао</figcaption></figure>
+      <figure><img src="img/ig-summer.jpg" alt=""><figcaption>летняя версия</figcaption></figure>
+      <figure><img src="img/ig-hydrangea.jpg" alt=""><figcaption>к кофе</figcaption></figure>
+      <figure><img src="img/ig-meringue.jpg" alt=""><figcaption>меренги к чаю</figcaption></figure>
+      <figure><img src="img/ig-wood.jpg" alt=""><figcaption>на доске</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="news" id="news">
+  <div class="wrap">
+    <div class="head"><h2 class="caps">Новости компании</h2><a class="pill dark" href="#">Все новости</a></div>
+    <div class="ribbons">
+      <article class="rb"><div class="ph"><img src="img/ig-zefir-box.jpg" alt=""><span class="tag">Новости</span></div><h3>Сладкий партнёр премии «Мама года 2026»</h3><p>Белёвская пастильная мануфактура – партнёр премии.</p></article>
+      <article class="rb"><div class="ph"><img src="img/ig-tea-winter.jpg" alt=""><span class="tag">Новости</span></div><h3>Партнёр фестиваля «Морозное настроение»</h3><p>Зимний фестиваль по фигурному катанию.</p></article>
+      <article class="rb"><div class="ph"><img src="img/ig-gift.jpg" alt=""><span class="tag">Новости</span></div><h3>Подарочный набор на Flowwow</h3><p>Пастила в новой мятной коробке – с доставкой.</p></article>
+    </div>
+    <div class="feed">
+      <div class="who"><div class="ava"><img src="img/logo.svg" alt=""></div><div><b>@pastila1881</b><span>32,2 тыс. подписчиков · 1 854 публикации</span></div></div>
+      <div class="grid">
+        <img src="img/ig-samovar.jpg" alt=""><img src="img/ig-walker.jpg" alt=""><img src="img/ig-merengi-cups.jpg" alt=""><img src="img/ig-evening.jpg" alt=""><img src="img/ig-wood.jpg" alt=""><img src="img/ig-apples-merengi.jpg" alt="">
+      </div>
+    </div>
+    <p class="note">Концепт 2 из 7. Цвета, шрифтовые приёмы и фото взяты из Instagram @pastila1881.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

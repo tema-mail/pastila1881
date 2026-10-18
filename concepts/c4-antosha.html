@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Антоша и пастила</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800;900&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Концепт 4. Игровой: свой персонаж-талисман Антоша (антоновка в картузе), волны «яблочный зелёный / карамель пастилы / малина», бегущая строка, наклейки, счётчики. */
+:root{
+  --apple:#3faa2e;    /* антоновка */
+  --apple-d:#23781a;
+  --caramel:#f0a94e;  /* корочка пастилы */
+  --rasp:#ec3c72;     /* малина «Кусочка» */
+  --cream:#fff6e2;
+  --cocoa:#3a2416;    /* обводки и текст */
+  --f-disp:"Unbounded","Arial Black",system-ui,sans-serif;
+  --f-body:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--cream);color:var(--cocoa);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:#fff;border-bottom:3px solid var(--cocoa)}
+.top .wrap{display:flex;align-items:center;gap:26px;min-height:78px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo img{width:74px}
+.nav{display:flex;gap:22px;font-weight:800;font-size:15px;margin-left:auto}
+.nav a{text-decoration:none}.nav a:hover{color:var(--apple-d)}
+.mp{display:flex;gap:8px}
+.mp span{font-weight:800;font-size:13px;border:2px solid var(--cocoa);border-radius:10px;padding:5px 9px;background:#fff}
+.mp .wb{background:#a41aa8;color:#fff;border-color:#a41aa8}
+.go{font-family:var(--f-disp);font-weight:800;font-size:14px;background:var(--apple);color:#fff;text-decoration:none;padding:12px 18px;border-radius:14px;border:3px solid var(--cocoa);box-shadow:3px 3px 0 var(--cocoa);white-space:nowrap}
+.burger{display:none;margin-left:auto;font-family:var(--f-disp);font-weight:800;background:var(--caramel);border:3px solid var(--cocoa);border-radius:12px;padding:6px 12px;color:var(--cocoa)}
+.marq{background:var(--rasp);color:#fff;font-weight:800;overflow:hidden;white-space:nowrap;border-bottom:3px solid var(--cocoa)}
+.marq div{display:inline-block;padding:10px 0;animation:mq 28s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* экран 1 */
+.hero{position:relative;overflow:hidden;background:var(--caramel)}
+.hero .waves{position:absolute;inset:0;width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1.05fr;gap:20px;align-items:center;min-height:640px;padding-block:40px}
+.hero h1{font-family:var(--f-disp);font-weight:900;font-size:clamp(40px,6vw,86px);line-height:.98;margin:0 0 20px;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 .hl{color:#fff;-webkit-text-stroke:3px var(--cocoa);paint-order:stroke fill}
+.hero p{font-size:19px;font-weight:700;max-width:40ch;margin:0 0 28px}
+.btn{display:inline-block;font-family:var(--f-disp);font-weight:800;font-size:17px;text-decoration:none;padding:16px 26px;border-radius:18px;border:3px solid var(--cocoa);box-shadow:5px 5px 0 var(--cocoa);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--cocoa)}
+.btn.w{background:#fff;color:var(--cocoa)}.btn.g{background:var(--apple);color:#fff}.btn.r{background:var(--rasp);color:#fff}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.stage{position:relative;aspect-ratio:1/1;max-width:600px;justify-self:center;width:100%}
+.stage .hero-c{position:absolute;inset:6% 10% 0 10%}
+.st{position:absolute;filter:drop-shadow(3px 4px 0 rgba(58,36,22,.9));animation:bob 5s ease-in-out infinite}
+.st img{width:100%}
+.st.s1{width:28%;left:-2%;top:12%;animation-delay:-1s}
+.st.s2{width:24%;right:-2%;top:6%;animation-delay:-2.5s}
+.st.s3{width:26%;right:0;bottom:12%;animation-delay:-3.4s}
+.st.s4{width:20%;left:2%;bottom:6%;animation-delay:-.4s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-6deg)}50%{transform:translateY(-14px) rotate(6deg)}}
+.bubble{position:absolute;left:50%;top:-2%;background:#fff;border:3px solid var(--cocoa);border-radius:22px;padding:10px 16px;font-weight:800;font-size:15px;transform:translateX(-10%) rotate(3deg);box-shadow:4px 4px 0 var(--cocoa);max-width:230px}
+/* экран 2: продукты */
+.prods{padding-block:84px;background:var(--cream)}
+.h2{font-family:var(--f-disp);font-weight:900;font-size:clamp(30px,4.2vw,56px);line-height:1;text-transform:uppercase;margin:0}
+.ph{display:flex;justify-content:space-between;align-items:end;flex-wrap:wrap;gap:18px;margin-bottom:38px}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.card{border:3px solid var(--cocoa);border-radius:26px;overflow:hidden;background:#fff;box-shadow:6px 6px 0 var(--cocoa);display:flex;flex-direction:column;transition:transform .2s}
+.card:hover{transform:rotate(-1.5deg) translateY(-4px)}
+.card .im{position:relative;aspect-ratio:1/1;overflow:hidden}
+.card .im img{position:absolute;inset:12%;width:76%;height:76%;object-fit:contain}
+.card .im.photo img{inset:0;width:100%;height:100%;object-fit:cover}
+.card:nth-child(1) .im{background:var(--rasp)}
+.card:nth-child(2) .im{background:#bfe3a6}
+.card:nth-child(3) .im{background:var(--caramel)}
+.card:nth-child(4) .im{background:#cfe8ff}
+.stick{position:absolute;z-index:2;top:12px;left:12px;font-family:var(--f-disp);font-weight:800;font-size:12px;background:#fff;border:2px solid var(--cocoa);border-radius:999px;padding:5px 10px;transform:rotate(-6deg)}
+.card .b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{font-family:var(--f-disp);font-weight:800;font-size:19px;margin:0;line-height:1.15}
+.card p{margin:0;font-size:15px;flex:1}
+.card .more{font-weight:800;color:var(--apple-d);text-decoration:none;margin-top:8px}
+/* экран 3: счётчики */
+.nums{background:var(--apple);color:#fff;border-block:3px solid var(--cocoa);padding-block:70px;position:relative;overflow:hidden}
+.nums .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;text-align:center;position:relative;z-index:2}
+.num b{font-family:var(--f-disp);font-weight:900;font-size:clamp(46px,6vw,84px);line-height:1;display:block;color:#fff;-webkit-text-stroke:3px var(--cocoa);paint-order:stroke fill;font-variant-numeric:tabular-nums}
+.num span{display:block;font-family:var(--f-disp);font-weight:800;font-size:18px;margin-top:10px}
+.num p{margin:6px auto 0;max-width:24ch;font-weight:700;opacity:.95;font-size:15px}
+/* экран 4: история Антоши */
+.story{padding-block:90px;background:var(--cream)}
+.box{position:relative;background:var(--apple-d);color:#fff;border:3px solid var(--cocoa);border-radius:36px;box-shadow:8px 8px 0 var(--cocoa);display:grid;grid-template-columns:1.2fr .8fr;gap:24px;overflow:hidden}
+.box .t{padding:52px 0 52px 52px;position:relative;z-index:2}
+.box h2{font-family:var(--f-disp);font-weight:900;text-transform:uppercase;font-size:clamp(28px,3.6vw,48px);line-height:1.02;margin:0 0 18px;color:var(--caramel)}
+.box p{font-size:18px;font-weight:700;max-width:52ch;margin:0 0 14px}
+.path{display:flex;flex-wrap:wrap;gap:8px;margin:20px 0 28px}
+.path span{background:#fff;color:var(--cocoa);font-weight:800;border-radius:999px;padding:7px 14px;font-size:14px;border:2px solid var(--cocoa)}
+.path i{font-style:normal;align-self:center;font-weight:900}
+.box .ant{align-self:end;position:relative}
+.box .stripes{position:absolute;inset:0;opacity:.18}
+.note{font-size:13px;opacity:.6;margin-top:26px}
+@media (max-width:1040px){
+  .nav,.mp{display:none}.burger{display:block}.go{display:none}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:78px;left:0;right:0;background:#fff;border-bottom:3px solid var(--cocoa);padding:18px max(20px,env(safe-area-inset-left,0px))}
+  .hero .wrap{grid-template-columns:1fr;min-height:0}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nums .grid{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .box{grid-template-columns:1fr}.box .t{padding:36px 26px 0}.box .ant{max-width:300px;justify-self:center}
+}
+@media (max-width:560px){
+  .cards{gap:12px}.card{border-radius:18px;box-shadow:4px 4px 0 var(--cocoa)}.card h3{font-size:15px}.card p{font-size:13px}.card .b{padding:12px}
+  .hero h1 .hl{-webkit-text-stroke:2px var(--cocoa)}
+  .bubble{font-size:13px;max-width:170px}
+}
+@media (prefers-reduced-motion:reduce){.st,.marq div{animation:none}}
+</style>
+</head>
+<body>
+<!-- Антоша: собственный персонаж концепта, антоновка в купеческом картузе -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="antosha" viewBox="0 0 400 420">
+      <ellipse cx="200" cy="405" rx="120" ry="12" fill="#3a2416" opacity=".18"/>
+      <path d="M200 120c-70-40-170 0-160 120 8 100 80 160 160 150 80 10 152-50 160-150 10-120-90-160-160-120Z" fill="#8ed14a" stroke="#3a2416" stroke-width="8"/>
+      <path d="M90 190c10-40 40-62 74-66" stroke="#fff" stroke-width="14" stroke-linecap="round" opacity=".55" fill="none"/>
+      <path d="M205 118c0-30 8-52 26-66" stroke="#3a2416" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M232 60c30-26 70-20 82-4-24 26-60 30-82 4Z" fill="#3faa2e" stroke="#3a2416" stroke-width="7"/>
+      <!-- картуз -->
+      <path d="M108 128c10-46 72-70 120-62 48 8 78 34 78 62Z" fill="#2b2b3a" stroke="#3a2416" stroke-width="8"/>
+      <path d="M96 132c40-14 150-16 222 0 6 2 6 14-2 16-70-12-150-12-218 2-8 0-10-14-2-18Z" fill="#1c1c27" stroke="#3a2416" stroke-width="6"/>
+      <path d="M170 74c20-6 50-6 70 2" stroke="#f0a94e" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <!-- лицо -->
+      <ellipse cx="160" cy="226" rx="20" ry="26" fill="#fff" stroke="#3a2416" stroke-width="6"/>
+      <ellipse cx="246" cy="226" rx="20" ry="26" fill="#fff" stroke="#3a2416" stroke-width="6"/>
+      <circle cx="166" cy="232" r="9" fill="#3a2416"/><circle cx="240" cy="232" r="9" fill="#3a2416"/>
+      <circle cx="169" cy="228" r="3" fill="#fff"/><circle cx="243" cy="228" r="3" fill="#fff"/>
+      <ellipse cx="128" cy="276" rx="20" ry="12" fill="#ec3c72" opacity=".55"/>
+      <ellipse cx="280" cy="276" rx="20" ry="12" fill="#ec3c72" opacity=".55"/>
+      <path d="M168 282c18 26 54 26 72 0" fill="#7a2a1c" stroke="#3a2416" stroke-width="7" stroke-linejoin="round"/>
+      <path d="M186 292c10 8 26 8 36 0" fill="#ec3c72"/>
+      <!-- ручки и пастила -->
+      <path d="M60 282c-30-6-44-30-34-56" stroke="#3a2416" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <circle cx="28" cy="218" r="16" fill="#fff" stroke="#3a2416" stroke-width="6"/>
+      <path d="M346 284c26 6 40 0 44-20" stroke="#3a2416" stroke-width="9" stroke-linecap="round" fill="none"/>
+      <g transform="translate(330 196) rotate(-12)">
+        <rect x="0" y="0" width="74" height="54" rx="8" fill="#f0c486" stroke="#3a2416" stroke-width="6"/>
+        <path d="M6 16h62M6 30h62M6 44h62" stroke="#c98a45" stroke-width="5"/>
+      </g>
+      <!-- ножки -->
+      <path d="M170 386v20M234 386v20" stroke="#3a2416" stroke-width="10" stroke-linecap="round"/>
+      <path d="M150 410h34M218 410h34" stroke="#3a2416" stroke-width="10" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#">Главная</a><a href="#prods">Каталог</a><a href="#story">О нас</a><a href="#">Новости</a><a href="#">Контакты</a></nav>
+    <div class="mp"><span class="wb">WB</span><span>pastila.eu</span></div>
+    <a class="go" href="#">Где купить</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+<div class="marq" aria-hidden="true"><div>
+  &nbsp;С 1881 года ★ 3 кг яблок в 1 кг пастилы ★ Русская печь XIX века ★ Сделано руками в Белёве ★ Без добавления сахара тоже есть ★ Более 100 магазинов в Москве ★
+  &nbsp;С 1881 года ★ 3 кг яблок в 1 кг пастилы ★ Русская печь XIX века ★ Сделано руками в Белёве ★ Без добавления сахара тоже есть ★ Более 100 магазинов в Москве ★
+</div></div>
+
+<section class="hero">
+  <svg class="waves" viewBox="0 0 1440 700" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 0h1440v700H0Z" fill="#f0a94e"/>
+    <path d="M760 0c120 140-60 250 80 380s300 40 380 200 220 120 220 120V0Z" fill="#ec3c72"/>
+    <path d="M900 0c80 120-40 230 100 340s220 40 300 160 140 200 140 200V0Z" fill="#ffd36e"/>
+    <path d="M0 560c180-60 360 40 560-20s300-120 520-40 360 60 360 60v140H0Z" fill="#fff6e2"/>
+  </svg>
+  <div class="wrap">
+    <div>
+      <h1>Это не просто <span class="hl">пастила!</span></h1>
+      <p>Это три килограмма антоновки, которые неделю томились в русской печи и стали одним килограммом белёвской пастилы.</p>
+      <div class="btns"><a class="btn g" href="#prods">Попробовать</a><a class="btn w" href="#story">Кто такой Антоша?</a></div>
+    </div>
+    <div class="stage">
+      <svg class="hero-c" viewBox="0 0 400 420" role="img" aria-label="Антоша – антоновское яблоко в картузе с кусочком пастилы"><use href="#antosha"/></svg>
+      <div class="bubble">Привет! Я Антоша, из меня делают пастилу</div>
+      <div class="st s1"><img src="img/cut-apple.png" alt=""></div>
+      <div class="st s2"><img src="img/bar-pink.png" alt=""></div>
+      <div class="st s3"><img src="img/cut-zef.png" alt=""></div>
+      <div class="st s4"><img src="img/cut-merengi.png" alt=""></div>
+    </div>
+  </div>
+</section>
+
+<section class="prods" id="prods">
+  <div class="wrap">
+    <div class="ph"><h2 class="h2">Выбери вкус</h2><a class="btn r" href="#">Весь каталог</a></div>
+    <div class="cards">
+      <article class="card"><div class="im photo"><img src="img/ig-raspberry.jpg" alt=""><span class="stick">новинка</span></div><div class="b"><h3>«Кусочек»</h3><p>Пастила в мини-упаковке. Малина, вишня, черника.</p><a class="more" href="#">Хочу →</a></div></article>
+      <article class="card"><div class="im"><img src="img/cut-merengi.png" alt=""><span class="stick">лёгкие</span></div><div class="b"><h3>Меренги</h3><p>Воздушные яблочные меренги в стаканчике.</p><a class="more" href="#">Хочу →</a></div></article>
+      <article class="card"><div class="im"><img src="img/cut-plate.png" alt=""><span class="stick">хит</span></div><div class="b"><h3>Классика</h3><p>Белёвская пастила 200 г: яблоки, сахар, белок.</p><a class="more" href="#">Хочу →</a></div></article>
+      <article class="card"><div class="im"><img src="img/bar-mint.png" alt=""><span class="stick">35 г</span></div><div class="b"><h3>Батончик</h3><p>Яблочный и ягодный. Влезет в любой карман.</p><a class="more" href="#">Хочу →</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap grid">
+    <div class="num"><b>1881</b><span>год рождения</span><p>Купец Прохоров ставит в Белёве первый завод</p></div>
+    <div class="num"><b>7</b><span>дней</span><p>столько в среднем делается один кусочек</p></div>
+    <div class="num"><b>3 кг</b><span>яблок</span><p>уходит на 1 кг белёвской пастилы</p></div>
+    <div class="num"><b>100+</b><span>магазинов</span><p>в Москве, где нас можно найти</p></div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <div class="box">
+      <svg class="stripes" viewBox="0 0 800 500" preserveAspectRatio="none" aria-hidden="true"><path d="M0 120C200 40 300 220 520 140S800 60 800 60V0H0Z" fill="#8ed14a"/><path d="M0 500c160-80 320 20 480-40s320-60 320-60v100Z" fill="#8ed14a"/></svg>
+      <div class="t">
+        <h2>Эй, привет! Я Антоша</h2>
+        <p>Я антоновка из-под Белёва. Меня не превращают в пюре из пакета: сначала запекают целиком, потом взбивают с белком и сушат слоями в печи, которой больше ста лет.</p>
+        <p>Это долго, зато честно. Так делали ещё при купце Прохорове.</p>
+        <div class="path"><span>печём</span><i>→</i><span>взбиваем</span><i>→</i><span>сушим</span><i>→</i><span>собираем пирог</span><i>→</i><span>досушиваем</span></div>
+        <a class="btn w" href="#">Как делают пастилу</a>
+      </div>
+      <svg class="ant" viewBox="0 0 400 420" role="img" aria-label="Антоша"><use href="#antosha"/></svg>
+    </div>
+    <p class="note">Концепт 4 из 7. Подача по мотивам marmeladich.ru (персонаж, волны, бегущая строка, счётчики), персонаж Антоша нарисован для этого концепта.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+</script>
+</body>
+</html>

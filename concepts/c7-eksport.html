@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Russian Pastila 1881</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Tenor+Sans&family=PT+Sans:wght@400;700&family=PT+Mono&display=swap">
+<style>
+/* Концепт 7. Экспорт: швейцарская сетка, белый и зелёный печати, переключатель языков (на сайте их четыре), карта поставок по настоящим координатам. Для гостей, сетей и дистрибьюторов. */
+:root{
+  --white:#ffffff;
+  --mist:#eef2ec;     /* серо-зелёный нейтральный */
+  --green:#206c2d;    /* зелёный логотипа */
+  --apple:#a9c84a;
+  --black:#111511;
+  --grey:#5e675f;
+  --f-disp:"Tenor Sans","Helvetica Neue",Arial,sans-serif;
+  --f-body:"PT Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"PT Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--white);color:var(--black);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--grey)}
+/* шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--white);border-bottom:1px solid var(--black)}
+.top .wrap{display:grid;grid-template-columns:auto 1fr auto auto;gap:28px;align-items:center;min-height:68px}
+.logo img{width:74px}
+.nav{display:flex;gap:26px;font-size:15px}
+.nav a{text-decoration:none}.nav a:hover{color:var(--green)}
+.langs{display:flex;border:1px solid var(--black)}
+.langs button{font:inherit;font-family:var(--f-mono);font-size:13px;background:var(--white);color:var(--black);border:0;border-right:1px solid var(--black);padding:8px 12px;cursor:pointer}
+.langs button:last-child{border-right:0}
+.langs button[aria-pressed="true"]{background:var(--green);color:var(--white)}
+.langs button:focus-visible{outline:2px solid var(--apple);outline-offset:-2px}
+.cta{background:var(--black);color:var(--white);text-decoration:none;padding:10px 16px;font-size:15px;white-space:nowrap}
+.burger{display:none;font:inherit;background:none;border:1px solid var(--black);padding:6px 12px}
+/* экран 1 */
+.hero{border-bottom:1px solid var(--black)}
+.hero .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;padding-block:40px 0}
+.hero .meta{grid-column:1/-1;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:30px}
+.hero h1{grid-column:1/9;font-family:var(--f-disp);font-weight:400;font-size:clamp(48px,8.4vw,132px);line-height:.92;letter-spacing:-.02em;margin:0 0 30px;text-wrap:balance;min-height:2em}
+.hero h1 .g{color:var(--green)}
+.hero .side{grid-column:9/13;align-self:end;padding-bottom:36px}
+.hero .side p{margin:0 0 20px;font-size:18px;min-height:5.4em}
+.btn{display:inline-block;text-decoration:none;padding:14px 22px;border:1px solid var(--black);font-size:15px}
+.btn.k{background:var(--green);border-color:var(--green);color:var(--white)}
+.strip{grid-column:1/-1;display:grid;grid-template-columns:5fr 3fr 4fr;gap:0;border-top:1px solid var(--black)}
+.strip>div{border-right:1px solid var(--black);min-width:0}
+.strip>div:last-child{border-right:0}
+.strip img{width:100%;height:340px;object-fit:cover}
+.strip .stat{padding:24px;display:flex;flex-direction:column;justify-content:space-between;background:var(--mist)}
+.strip .stat b{font-family:var(--f-disp);font-weight:400;font-size:clamp(56px,6vw,92px);line-height:1;color:var(--green)}
+/* экран 2: почему */
+.why{border-bottom:1px solid var(--black)}
+.why .wrap{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+.why .c{padding:46px 28px 50px 0;border-right:1px solid var(--black);min-width:0}
+.why .c+.c{padding-left:28px}
+.why .c:last-child{border-right:0}
+.why .n{font-family:var(--f-disp);font-size:64px;line-height:1;color:var(--green);margin:16px 0 12px}
+.why h3{font-family:var(--f-disp);font-weight:400;font-size:24px;margin:0 0 10px;line-height:1.2}
+.why p{margin:0;color:var(--grey)}
+.why .en{display:block;margin-top:12px;font-style:italic;font-size:15px;color:var(--black)}
+/* экран 3: карта */
+.map{background:var(--mist);border-bottom:1px solid var(--black)}
+.map .wrap{display:grid;grid-template-columns:4fr 8fr;gap:40px;padding-block:70px}
+.map h2,.part h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(34px,4.4vw,60px);line-height:1;margin:14px 0 20px;letter-spacing:-.01em}
+.tabs{display:flex;border:1px solid var(--black);width:max-content;max-width:100%;margin-bottom:22px}
+.tabs button{font:inherit;font-size:15px;background:var(--white);color:var(--black);border:0;border-right:1px solid var(--black);padding:10px 16px;cursor:pointer}
+.tabs button:last-child{border-right:0}
+.tabs button[aria-pressed="true"]{background:var(--black);color:var(--white)}
+.legend{display:grid;gap:10px;font-size:16px}
+.legend div{display:flex;justify-content:space-between;gap:10px;border-bottom:1px solid rgba(17,21,17,.15);padding-bottom:8px}
+.legend b{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.mapbox{background:var(--white);border:1px solid var(--black);overflow-x:auto}
+.mapbox svg{display:block;width:100%;min-width:520px;height:auto}
+.mapbox text{font-family:var(--f-body);font-size:13px;fill:var(--black)}
+.mapbox .t-small{font-family:var(--f-mono);font-size:10px;fill:var(--grey)}
+.grat{stroke:#dfe5dc;stroke-width:1}
+.route{fill:none;stroke:var(--green);stroke-width:1.6;stroke-dasharray:4 4}
+.pt{fill:var(--green)}
+.home{fill:var(--black)}
+.layer{transition:opacity .4s}
+.layer[hidden]{display:none}
+/* экран 4: партнёрам */
+.part .wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:0 24px;padding-block:70px 80px}
+.part .l{grid-column:1/6}
+.part .r{grid-column:7/13;display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--black)}
+.part .r div{padding:22px 20px 26px 0;border-bottom:1px solid var(--black);min-width:0}
+.part .r div:nth-child(odd){border-right:1px solid var(--black)}
+.part .r div:nth-child(even){padding-left:20px}
+.part .r h3{font-family:var(--f-disp);font-weight:400;font-size:21px;margin:8px 0 6px}
+.part .r p{margin:0;color:var(--grey);font-size:15px}
+.contact{margin-top:28px;display:grid;gap:6px;font-size:18px}
+.contact span{user-select:all}
+.note{font-size:13px;color:var(--grey);margin-top:28px;grid-column:1/-1}
+@media (max-width:1060px){
+  .top .wrap{grid-template-columns:auto 1fr auto}
+  .nav{display:none}.cta{display:none}.burger{display:block;justify-self:end}
+  .langs{justify-self:end}
+  .nav.open{display:flex;flex-direction:column;position:absolute;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--black);padding:16px max(20px,env(safe-area-inset-left,0px))}
+  .hero h1{grid-column:1/-1;min-height:0}.hero .side{grid-column:1/-1}.hero .side p{min-height:0}
+  .strip{grid-template-columns:1fr 1fr}.strip>div:first-child{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--black)}
+  .why .wrap{grid-template-columns:1fr}.why .c{border-right:0;border-bottom:1px solid var(--black);padding:34px 0}.why .c+.c{padding-left:0}.why .c:last-child{border-bottom:0}
+  .map .wrap{grid-template-columns:1fr}
+  .part .l,.part .r{grid-column:1/-1}.part .r{margin-top:30px}
+}
+@media (max-width:560px){
+  .top .wrap{gap:12px}
+  .langs button{padding:7px 8px;font-size:12px}
+  .logo img{width:60px}
+  .strip{grid-template-columns:1fr}.strip>div{border-right:0;border-bottom:1px solid var(--black)}
+  .strip img{height:240px}
+  .part .r{grid-template-columns:1fr}.part .r div:nth-child(odd){border-right:0}.part .r div:nth-child(even){padding-left:0}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#"><img src="img/logo.svg" alt="Белёвская пастильная мануфактура"></a>
+    <nav class="nav" id="nav"><a href="#why">О продукте</a><a href="#map">География</a><a href="#part">Партнёрам</a><a href="#">Каталог</a><a href="#">Новости</a><a href="#">Контакты</a></nav>
+    <div class="langs" role="group" aria-label="Язык">
+      <button type="button" id="l-ru" data-l="ru" aria-pressed="true">RU</button>
+      <button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button>
+      <button type="button" id="l-de" data-l="de" aria-pressed="false">DE</button>
+      <button type="button" id="l-zh" data-l="zh" aria-pressed="false">中</button>
+    </div>
+    <a class="cta" href="#part">Стать партнёром</a>
+    <button class="burger" type="button" id="burger" aria-controls="nav" aria-expanded="false">Меню</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="meta mono"><span>53°48′ с. ш. · 36°08′ в. д. · Белёв, Тульская область</span><span>Est. 1881 · Мануфактура с 2010</span></div>
+    <h1 id="h1">Белёвская пастила. <span class="g">Русский</span> яблочный десерт</h1>
+    <div class="side">
+      <p id="sub">Печёная антоновка, яичный белок и неделя в русской печи. Рецепт 1881 года, с которым мануфактура выходит в Европу и Китай.</p>
+      <a class="btn k" href="#part" id="cta1">Для сетей и дистрибьюторов</a>
+    </div>
+    <div class="strip">
+      <div><img src="img/ig-summer.jpg" alt="Белёвский зефир, мармелад и пастила на столе в саду"></div>
+      <div class="stat"><span class="mono">яблок на 1 кг пастилы</span><b>3 кг</b></div>
+      <div><img src="img/ig-flatlay.jpg" alt="Коробка белёвской пастилы и половинки яблок"></div>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="c"><span class="mono">01 · Происхождение</span><div class="n">Белёв</div><h3>Сделано только в Белёве</h3><p>Белёвскую пастилу выпускают в Белёве, небольшом городе Тульской области. Отсюда её везли в Тифлис, Варшаву и Ригу ещё в XIX веке.</p><span class="en">Made in Belev, Tula region, since 1881.</span></div>
+    <div class="c"><span class="mono">02 · Состав</span><div class="n">2–4</div><h3>ингредиента в составе</h3><p>Яблоки, яичный белок, сахар или ягоды. Есть линейка без добавления сахара: яблоки и белок.</p><span class="en">Apples, egg white, sugar. A no-added-sugar range too.</span></div>
+    <div class="c"><span class="mono">03 · Метод</span><div class="n">~7</div><h3>дней на каждую партию</h3><p>Яблоки печём сами, пласты сушим в русской печи XIX века, досушиваем 12–24 часа.</p><span class="en">Baked, whipped, layered and slow-dried in a 19th-century stove.</span></div>
+  </div>
+</section>
+
+<section class="map" id="map">
+  <div class="wrap">
+    <div>
+      <span class="mono">География</span>
+      <h2>Куда едет пастила</h2>
+      <div class="tabs" role="group" aria-label="Период">
+        <button type="button" id="t-old" data-t="old" aria-pressed="false">1881–1917</button>
+        <button type="button" id="t-now" data-t="now" aria-pressed="true">Сегодня</button>
+      </div>
+      <div class="legend" id="lg-now">
+        <div><span>Москва</span><b>100+ магазинов</b></div>
+        <div><span>Сочи</span><b>2 магазина</b></div>
+        <div><span>Ростов-на-Дону</span><b>1 магазин</b></div>
+        <div><span>Европа</span><b>pastila.eu</b></div>
+        <div><span>Вся Россия</span><b>Wildberries</b></div>
+      </div>
+      <div class="legend" id="lg-old" hidden>
+        <div><span>Москва</span><b>XIX в.</b></div>
+        <div><span>Санкт-Петербург</span><b>XIX в.</b></div>
+        <div><span>Тифлис</span><b>XIX в.</b></div>
+        <div><span>Варшава</span><b>XIX в.</b></div>
+        <div><span>Рига</span><b>XIX в.</b></div>
+      </div>
+    </div>
+    <div class="mapbox">
+      <!-- равнопромежуточная проекция: долгота 18–48° в. д., широта 39–62° с. ш.; x=(lon-18)*20, y=(62-lat)*20 -->
+      <svg viewBox="0 0 600 460" role="img" aria-label="Карта: Белёв и города поставок">
+        <g class="grat">
+          <path d="M40 0v460M140 0v460M240 0v460M340 0v460M440 0v460M540 0v460"/>
+          <path d="M0 40h600M0 140h600M0 240h600M0 340h600M0 440h600"/>
+        </g>
+        <text class="t-small" x="44" y="454">20° в. д.</text><text class="t-small" x="544" y="454">45°</text>
+        <text class="t-small" x="4" y="36">60° с. ш.</text><text class="t-small" x="4" y="436">40°</text>
+        <g class="layer" id="ly-old" hidden>
+          <path class="route" d="M363 164Q380 140 392 125"/><path class="route" d="M363 164Q300 90 246 40"/>
+          <path class="route" d="M363 164Q470 270 536 406"/><path class="route" d="M363 164Q200 160 60 195"/>
+          <path class="route" d="M363 164Q240 110 122 101"/>
+          <circle class="pt" cx="392" cy="125" r="5"/><text x="402" y="122">Москва</text>
+          <circle class="pt" cx="246" cy="40" r="5"/><text x="256" y="38">Санкт-Петербург</text>
+          <circle class="pt" cx="536" cy="406" r="5"/><text x="500" y="426">Тифлис</text>
+          <circle class="pt" cx="60" cy="195" r="5"/><text x="68" y="214">Варшава</text>
+          <circle class="pt" cx="122" cy="101" r="5"/><text x="132" y="98">Рига</text>
+        </g>
+        <g class="layer" id="ly-now">
+          <path class="route" d="M363 164Q380 140 392 125"/><path class="route" d="M363 164Q420 260 435 368"/>
+          <path class="route" d="M363 164Q410 230 434 295"/><path class="route" d="M363 164Q190 200 6 230"/>
+          <path class="route" d="M363 164Q480 150 594 170"/>
+          <circle class="pt" cx="392" cy="125" r="9"/><text x="406" y="122">Москва · 100+</text>
+          <circle class="pt" cx="435" cy="368" r="5"/><text x="445" y="372">Сочи</text>
+          <circle class="pt" cx="434" cy="295" r="5"/><text x="444" y="299">Ростов-на-Дону</text>
+          <text x="12" y="250">← Европа · pastila.eu</text>
+          <text x="470" y="192">выход в Китай →</text>
+        </g>
+        <rect class="home" x="356" y="157" width="14" height="14" transform="rotate(45 363 164)"/>
+        <text x="320" y="190" style="font-weight:700">Белёв</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="part" id="part">
+  <div class="wrap">
+    <div class="l">
+      <span class="mono">Партнёрам</span>
+      <h2>Сети, дистрибьюторы, импортёры</h2>
+      <p>Поставляем пастилу, зефир, мармелад, меренги и смокву. Делаем продукцию под вашей маркой. Встречаемся на выставке «Продэкспо» в Москве.</p>
+      <div class="contact"><span>+7 985 770-87-87</span><span>pastila1881@yandex.ru</span><span class="mono">301531, Тульская обл., г. Белёв, ул. Рабочая, 134</span></div>
+    </div>
+    <div class="r">
+      <div><span class="mono">Сети</span><h3>Розница в России</h3><p>Полная линейка, разные фасовки: от 35 г до подарочных коробок.</p></div>
+      <div><span class="mono">СТМ</span><h3>Под вашей маркой</h3><p>Пастила, зефир и мармелад по нашему рецепту с вашей упаковкой.</p></div>
+      <div><span class="mono">Европа</span><h3>pastila.eu</h3><p>Интернет-магазин для покупателей в Европе.</p></div>
+      <div><span class="mono">Выставки</span><h3>«Продэкспо»</h3><p>Стенд мануфактуры в Москве, павильон 7.</p></div>
+    </div>
+    <p class="note">Концепт 7 из 7, свой. Переводы на EN, DE и 中 – черновые, для показа идеи; перед запуском нужен переводчик.</p>
+  </div>
+</section>
+<script>
+const b=document.getElementById('burger'),n=document.getElementById('nav');
+b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o)});
+const mb=document.querySelector('.mapbox');mb.scrollLeft=(mb.scrollWidth-mb.clientWidth)*.6;
+const L={
+ ru:{h:'Белёвская пастила. <span class="g">Русский</span> яблочный десерт',s:'Печёная антоновка, яичный белок и неделя в русской печи. Рецепт 1881 года, с которым мануфактура выходит в Европу и Китай.',c:'Для сетей и дистрибьюторов'},
+ en:{h:'Belev pastila. <span class="g">Russian</span> apple confection',s:'Baked Antonovka apples, egg white and a week in a Russian stove. A recipe from 1881, now heading to Europe and China.',c:'For retailers and distributors'},
+ de:{h:'Beljower Pastila. <span class="g">Russisches</span> Apfelkonfekt',s:'Gebackene Antonowka-Äpfel, Eiweiß und eine Woche im russischen Ofen. Ein Rezept von 1881.',c:'Für Handel und Vertrieb'},
+ zh:{h:'别廖夫苹果软糕 <span class="g">俄罗斯</span>传统甜点',s:'烤安东诺夫卡苹果、蛋白，在俄式火炉中慢烘一周。始于1881年的配方。',c:'经销商合作'}
+};
+document.querySelectorAll('.langs button').forEach(x=>x.addEventListener('click',()=>{
+ document.querySelectorAll('.langs button').forEach(y=>y.setAttribute('aria-pressed',y===x));
+ const d=L[x.dataset.l];document.getElementById('h1').innerHTML=d.h;document.getElementById('sub').textContent=d.s;document.getElementById('cta1').textContent=d.c;
+ document.documentElement.lang=x.dataset.l}));
+document.querySelectorAll('.tabs button').forEach(x=>x.addEventListener('click',()=>{
+ document.querySelectorAll('.tabs button').forEach(y=>y.setAttribute('aria-pressed',y===x));
+ const old=x.dataset.t==='old';
+ document.getElementById('ly-old').hidden=!old;document.getElementById('ly-now').hidden=old;
+ document.getElementById('lg-old').hidden=!old;document.getElementById('lg-now').hidden=old}));
+</script>
+</body>
+</html>

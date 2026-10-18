@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Пастила 1881 – концепты</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Manrope:wght@400;600;700&display=swap">
+<style>
+img{max-width:100%}
+/* Хаб концептов: спокойная рабочая витрина в цветах бренда; карточки-превью ведут на концепты. */
+:root{
+  --bg:#f5f6f2; --card:#ffffff; --fg:#18211b; --muted:#5c665f; --line:#dde2da;
+  --brand:#206c2d; --brand-soft:#e3eee0;
+  --f-disp:"Forum","Times New Roman",serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121713;--card:#1b221d;--fg:#e9ede7;--muted:#a3ada5;--line:#2c352e;--brand:#7fc28a;--brand-soft:#223127;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#121713;--card:#1b221d;--fg:#e9ede7;--muted:#a3ada5;--line:#2c352e;--brand:#7fc28a;--brand-soft:#223127;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+header.h{padding-block:44px 28px;border-bottom:1px solid var(--line)}
+.h .k{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);font-weight:700}
+.h h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(34px,5vw,58px);line-height:1.05;margin:10px 0 12px;text-wrap:balance}
+.h p{margin:0;max-width:68ch;color:var(--muted)}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.meta span{font-size:13px;background:var(--brand-soft);color:var(--brand);border-radius:999px;padding:4px 12px;font-weight:600}
+h2{font-family:var(--f-disp);font-weight:400;font-size:clamp(26px,3vw,36px);margin:0 0 18px}
+section{padding-block:40px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.c{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:transform .2s,box-shadow .2s}
+.c:hover{transform:translateY(-3px);box-shadow:0 18px 40px -24px rgba(0,0,0,.35)}
+.c:focus-visible{outline:3px solid var(--brand);outline-offset:3px}
+.shot{position:relative;background:var(--line)}
+.shot img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.shot .m{position:absolute;right:14px;bottom:-26px;width:21%;max-width:96px;border-radius:12px;border:3px solid var(--card);box-shadow:0 8px 20px -10px rgba(0,0,0,.5);aspect-ratio:195/422;object-fit:cover}
+.b{padding:20px 20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.n{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.n b{color:var(--brand)}
+.c h3{font-family:var(--f-disp);font-weight:400;font-size:28px;line-height:1.1;margin:0;padding-right:100px}
+.c p{margin:0;color:var(--muted);font-size:15px}
+.sw{display:flex;gap:6px;margin-top:6px;align-items:center}
+.sw i{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
+.sw span{font-size:13px;color:var(--muted);margin-left:8px}
+.open{margin-top:auto;padding-top:10px;font-weight:700;color:var(--brand)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.box h3{margin:0 0 10px;font-size:17px}
+.box ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.box li{color:var(--fg)}
+.box li span{color:var(--muted)}
+.pal{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.pal div{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pal i{width:28px;height:28px;border-radius:8px;border:1px solid rgba(0,0,0,.1)}
+.steps{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:start}
+.steps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--brand);color:var(--card);display:grid;place-items:center;font-weight:700;font-size:14px}
+footer{padding-block:30px 50px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+@media (max-width:820px){.grid,.two{grid-template-columns:1fr}.c h3{font-size:24px}}
+</style>
+</head>
+<body>
+
+
+<header class="h">
+  <div class="wrap">
+    <div class="k">pastila1881.com · редизайн главной</div>
+    <h1>Белёвская пастила: семь концептов главной</h1>
+    <p>В каждом концепте шапка и первые четыре экрана. Всё кликается и собрано под телефон. Тексты и цифры взяты с текущего сайта, из интервью об истории и из Instagram @pastila1881, ничего не придумано. Фото – из их ленты и с сайта.</p>
+    <div class="meta"><span>4 по заданию</span><span>3 своих</span><span>десктоп + телефон</span><span>19.10.2026</span></div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>Концепты</h2>
+    <div class="grid">
+      <a class="c" href="c1-letopis.html">
+        <div class="shot"><img src="img/thumbs/c1-letopis.jpg" alt="Концепт «Летопись», первый экран"><img class="m" src="img/thumbs/c1-letopis-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>1</b> · по заданию · история Руси</div><h3>Летопись</h3>
+        <p>Купец Прохоров, царский стол, поставки в Тифлис, Варшаву и Ригу. Вязь, киноварь, золото, рамки-обереги, «Рецептъ» с пропорциями 1881 года.</p>
+        <div class="sw"><i style="background:#13231a"></i><i style="background:#c9a24a"></i><i style="background:#a3271c"></i><i style="background:#efe4cc"></i><span>Ruslan Display + Old Standard</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c2-insta.html">
+        <div class="shot"><img src="img/thumbs/c2-insta.jpg" alt="Концепт «Как в Instagram», первый экран"><img class="m" src="img/thumbs/c2-insta-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>2</b> · по заданию · из Instagram</div><h3>Как в ленте</h3>
+        <p>Бутылочный зелёный и мята из их постов, прописные антиквой и рукописный акцент. Категории кружками, как хайлайты, ленточки «Новости компании».</p>
+        <div class="sw"><i style="background:#1f3a2b"></i><i style="background:#d4e7d2"></i><i style="background:#9cc54a"></i><i style="background:#d7405a"></i><span>Forum + Marck Script</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c3-yabloko.html">
+        <div class="shot"><img src="img/thumbs/c3-yabloko.jpg" alt="Концепт «Только яблоко», первый экран"><img class="m" src="img/thumbs/c3-yabloko-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>3</b> · по заданию · натуральность</div><h3>Только яблоко</h3>
+        <p>«Яблоко. Белок. Семь дней.» 3 кг яблок → 1 кг пастилы, составы как этикетка, сравнение с заварной пастилой, линейка без сахара.</p>
+        <div class="sw"><i style="background:#f3f6ee"></i><i style="background:#206c2d"></i><i style="background:#b9d63a"></i><i style="background:#6b4a2b"></i><span>Literata + Golos</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c4-antosha.html">
+        <div class="shot"><img src="img/thumbs/c4-antosha.jpg" alt="Концепт «Антоша», первый экран"><img class="m" src="img/thumbs/c4-antosha-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>4</b> · по заданию · как marmeladich.ru</div><h3>Антоша</h3>
+        <p>Свой талисман: антоновка в купеческом картузе. Волны, бегущая строка, наклейки, крупные счётчики 1881 / 7 / 3 кг / 100+.</p>
+        <div class="sw"><i style="background:#3faa2e"></i><i style="background:#f0a94e"></i><i style="background:#ec3c72"></i><i style="background:#3a2416"></i><span>Unbounded + Nunito</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c5-pech.html">
+        <div class="shot"><img src="img/thumbs/c5-pech.jpg" alt="Концепт «Печь», первый экран"><img class="m" src="img/thumbs/c5-pech-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>5</b> · свой · медленная еда</div><h3>Печь</h3>
+        <p>Тёмный, тёплый, как кино. Над пастилой летят живые искры, ниже пять стадий на одной шкале «≈ 7 дней». Сюда хорошо встанет их ролик о производстве.</p>
+        <div class="sw"><i style="background:#121010"></i><i style="background:#e2692c"></i><i style="background:#f3b25c"></i><i style="background:#efe7da"></i><span>Prata + Onest</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c6-podarok.html">
+        <div class="shot"><img src="img/thumbs/c6-podarok.jpg" alt="Концепт «Подарок», первый экран"><img class="m" src="img/thumbs/c6-podarok-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>6</b> · свой · подарки и B2B</div><h3>Подарок из Белёва</h3>
+        <p>Мятная коробка с зелёной лентой из их ленты. Конструктор набора из трёх вкусов, поводы, заявка для компаний и СТМ.</p>
+        <div class="sw"><i style="background:#cfe6dc"></i><i style="background:#1f4a36"></i><i style="background:#f3dcd6"></i><i style="background:#7a2335"></i><span>Alice + Rubik</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+      <a class="c" href="c7-eksport.html">
+        <div class="shot"><img src="img/thumbs/c7-eksport.jpg" alt="Концепт «Экспорт», первый экран"><img class="m" src="img/thumbs/c7-eksport-m.jpg" alt=""></div>
+        <div class="b"><div class="n"><b>7</b> · свой · экспорт и партнёры</div><h3>Russian Pastila</h3>
+        <p>Строгая сетка, переключатель RU / EN / DE / 中, карта поставок по настоящим координатам: 1881–1917 и сегодня. Блок для сетей и дистрибьюторов.</p>
+        <div class="sw"><i style="background:#ffffff"></i><i style="background:#206c2d"></i><i style="background:#a9c84a"></i><i style="background:#111511"></i><span>Tenor Sans + PT Sans</span></div>
+        <span class="open">Открыть →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap two">
+    <div class="box">
+      <h3>Что взяли с сайта и из истории</h3>
+      <ul>
+        <li>Меню: о компании, каталог, где купить, география, новости, награды, контакты; языки RU / EN / DE / 中</li>
+        <li>10 разделов каталога: пастила, без сахара, с ягодами, меренга, мармелад, зефир, сухарики, смоква, СТМ, пастилки</li>
+        <li>Составы и КБЖУ 16 товаров с главной</li>
+        <li>История: 1881, купец Амвросий Прохоров, печь XIX века на дровах, 3 кг яблок + 100 г сахара + 1 белок → 1 кг, ~7 дней, мануфактура с 2010</li>
+        <li>Где купить: Москва 100+ магазинов, Сочи 2, Ростов-на-Дону 1; pastila.eu для Европы</li>
+        <li>+7 985 770-87-87, пн–пт 9–19, pastila1881@yandex.ru, Белёв, ул. Рабочая, 134</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Что взяли из Instagram @pastila1881</h3>
+      <ul>
+        <li>32,2 тыс. подписчиков, 1 854 публикации; разобрали 120 последних постов</li>
+        <li>Новинки, которых нет на сайте: «Кусочек», меренги в стаканчике, подарочная мятная коробка</li>
+        <li>Каналы продаж: Wildberries, Flowwow, Telegram t.me/belpastila</li>
+        <li>Подача: прописные антиквой + рукописная строка, ленточки «Новости компании», фото на зелёном и в саду</li>
+      </ul>
+      <div class="pal">
+        <div><i style="background:#1f3a2b"></i>#1f3a2b</div><div><i style="background:#206c2d"></i>#206c2d логотип</div><div><i style="background:#d4e7d2"></i>#d4e7d2</div><div><i style="background:#f7f3ea"></i>#f7f3ea</div><div><i style="background:#d7405a"></i>#d7405a</div>
+      </div>
+    </div>
+    <div class="box">
+      <h3>Что мешает на текущем сайте</h3>
+      <ul>
+        <li>Шаблон 2017 года, предупреждение для Internet Explorer в коде</li>
+        <li>Пустые description и keywords у главной</li>
+        <li>Последняя новость – январь 2023, сайт выглядит заброшенным</li>
+        <li>Адреса вида /good/13 и /catalog/1, без ЧПУ</li>
+        <li>Абзац в блоке «храним традиции» повторён дважды</li>
+        <li>Нет ссылок на Instagram, Telegram и Wildberries; в подвале работает только ВКонтакте</li>
+        <li>Фото товаров 225–290 px, мелкие и размытые на новых экранах</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Дальше</h3>
+      <ol class="steps">
+        <li><span>Выбрать 1–2 направления, можно смешать (например, 3 + 6).</span></li>
+        <li><span>Карта сайта с ЧПУ и 301 со старых адресов – до вёрстки.</span></li>
+        <li><span>Вёрстка на Astro, ролик о производстве на первый экран, свежие фото товаров.</span></li>
+      </ol>
+      <p style="margin:14px 0 0;color:var(--muted);font-size:14px">Видео из рилсов в концепты не встало: Instagram не отдал файлы. В концепте «Печь» вместо ролика живые искры.</p>
+    </div>
+  </div>
+</section>
+<footer><div class="wrap">Концепты для обсуждения. Фото принадлежат «Белёвской пастильной мануфактуре». Переводы в концепте 7 черновые.</div></footer>
+
+</body>
+</html>
